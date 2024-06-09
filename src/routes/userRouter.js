@@ -1,8 +1,8 @@
 import express from 'express'
-
+import h from '../controllers/userControllers/index.js'
 const userRouter = express.Router()
 
-userRouter.get('/api/', (req, res)=>res.json({"name": "antonio",
+userRouter.get('/user', (req, res)=>res.json({"name": "antonio",
     "apellido": "rodriguez"
 }))
 
