@@ -1,0 +1,36 @@
+import {Sequelize} from 'sequelize'
+import models from './models/index.js'
+import env from './envConfig.js'
+
+const sequelize = new Sequelize(`postgres://${env.ConnectDb}`,{
+ logging:false,
+ native: false,
+});
+// const sequelize = new Sequelize(`${env.RenderDb}`, {
+//     logging: false, // set to console.log to see the raw SQL queries
+//      native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+//     dialectOptions: {
+//      ssl: {
+//         require: true,
+//        }    
+//      }
+//    });
+
+Object.values(models).forEach((model)=>model(sequelize));
+
+const {
+    User,
+    Home,
+    Item,
+}= sequelize.models;
+
+//Asociations:
+Home.hasMany(Item)
+Item.belongsTo(Home)
+
+export {
+    User,
+    Home,
+    Item,
+    sequelize,
+}
