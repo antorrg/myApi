@@ -8,11 +8,12 @@ import {info, items} from './helpers/database.js'
  };
 
  const getDetailById = async (req, res) => {
-    const {id}= req.params;
-    res.render(`album${id}`, {info, items})
+   const {id}= req.params;
+   const response = await serv.getById(id)
+    res.render(`album`, response)
     
  }
-
+ //{info, items}
  const getDetailImage = async (req, res)=>{
     const {img, id} = req.query;
     //console.log('query ', img, id) 

@@ -8,12 +8,13 @@ export default (sequelize) => {
             autoIncrement: true,
           },
         title: { type: DataTypes.STRING, allowNull: false },
+        logo: {type: DataTypes.STRING,allowNull: false},
         info_header: {type:DataTypes.STRING, allowNull: false},
         info_body:{type: DataTypes.TEXT, allowNull: true},
         url: { type: DataTypes.STRING, allowNull: false},
         enable: {
             type: DataTypes.BOOLEAN,
-            allowNull: true,
+         
             defaultValue: true
         },
         deleteAt:{

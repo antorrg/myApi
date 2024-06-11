@@ -5,11 +5,11 @@ import updController from './updController.js'
 import {getHome, getDetailById, getDetailImage} from './getControllers.js'
 
 export default {
+    
     createController : eh.catchAsync(createController),
     delController : eh.catchAsync(delController),
     updController : eh.catchAsync(updController),
     getHome : eh.catchAsync(getHome),
     getDetailById : eh.catchAsync(getDetailById),
     getDetailImage: eh.catchAsync(getDetailImage),
-
-}
+};
