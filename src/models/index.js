@@ -1,4 +1,4 @@
-import User from './user.js'
+import User from './holder.js'
 import Item from './item.js'
 import Home from './home.js'
 

@@ -18,7 +18,7 @@ import s from './src/envConfig.js'
 
 app.listen(s.Port, async ()=>{
     try {
-        await sequelize.sync({force: false});
+        await sequelize.sync({force:false});
         console.log(`Server on Port: ${s.Port}\n Everything is allright 😉`)
     } catch (error) {
         console.error('Error syncing database', error)

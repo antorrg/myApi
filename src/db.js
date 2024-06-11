@@ -19,7 +19,7 @@ const sequelize = new Sequelize(`postgres://${env.ConnectDb}`,{
 Object.values(models).forEach((model)=>model(sequelize));
 
 const {
-    User,
+    Holder,
     Home,
     Item,
 }= sequelize.models;
@@ -29,7 +29,7 @@ Home.hasMany(Item)
 Item.belongsTo(Home)
 
 export {
-    User,
+    Holder,
     Home,
     Item,
     sequelize,

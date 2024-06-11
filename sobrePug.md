@@ -164,3 +164,49 @@ html(lang="es")
    - Los valores `headerData.title` y `headerData.description` se pasan desde el controlador y se utilizan para renderizar contenido dinámico.
 
 Esto hará que tu contenido sea dinámico y adaptado según los datos proporcionados en el controlador.
+
+
+```pug
+   .container.marketing
+        .row
+          .col-lg-4
+            svg.bd-placeholder-img.rounded-circle(width="140", height="140", xmlns="http://www.w3.org/2000/svg", role="img", aria-label="Placeholder: 140x140", preserveAspectRatio="xMidYMid slice", focusable="false")
+              title Placeholder
+              rect(width="100%", height="100%", fill="#777")
+              text(x="50%", y="50%", fill="#777", dy=".3em") 140x140
+            h2.fw-normal Heading
+            p Some representative placeholder content for the three columns of text below the carousel. This is the first column.
+            p
+              a.btn.btn-secondary(href="#") View details &raquo;
+          .col-lg-4
+            svg.bd-placeholder-img.rounded-circle(width="140", height="140", xmlns="http://www.w3.org/2000/svg", role="img", aria-label="Placeholder: 140x140", preserveAspectRatio="xMidYMid slice", focusable="false")
+              title Placeholder
+              rect(width="100%", height="100%", fill="#777")
+              text(x="50%", y="50%", fill="#777", dy=".3em") 140x140
+            h2.fw-normal Heading
+            p Esta es la segunda co.
+            p
+              a.btn.btn-secondary(href=`/album/1`) View details &raquo;
+          .col-lg-4
+            svg.bd-placeholder-img.rounded-circle(width="140", height="140", xmlns="http://www.w3.org/2000/svg", role="img", aria-label="Placeholder: 140x140", preserveAspectRatio="xMidYMid slice", focusable="false")
+              title Placeholder
+              rect(width="100%", height="100%", fill="#777")
+              text(x="50%", y="50%", fill="#777", dy=".3em") 140x140
+            h2.fw-normal Heading
+            p And lastly this, the third column of representative placeholder content.
+            p
+              a.btn.btn-secondary(href="/album/2") View details &raquo;
+
+```
+
+
+```javascript
+function truncateText(text, wordLimit) {
+  const words = text.split(' ');
+  if (words.length > wordLimit) {
+    return words.slice(0, wordLimit).join(' ') + '...';
+  }
+  return text;
+}
+```
+
