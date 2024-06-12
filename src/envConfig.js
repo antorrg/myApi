@@ -1,11 +1,12 @@
 import dotenv from 'dotenv' 
 dotenv.config()
 
-const {PORT, URL,DB_USER, DB_PASSWORD,DB_HOST, DB_NAME, DB_DEPLOY }=process.env;
+const {PORT, DB_USER, DB_PASSWORD,DB_HOST, DB_NAME, DB_DEPLOY, USER_IMG, SECRET_KEY }=process.env;
 
 export default {
     Port : PORT,
-    Url :URL,
     ConnectDb : `${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
-    RenderDb : DB_DEPLOY
+    RenderDb : DB_DEPLOY,
+    UserImg : USER_IMG,
+    SecretKey : SECRET_KEY,
 }

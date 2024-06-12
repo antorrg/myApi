@@ -1,10 +1,11 @@
 import serv from "../../controllers/homeServ/index.js";
 
 const createController = async (req, res) => {
-  const { title, logo, info_header, info_body, url, items } = req.body;
+  const { title, landing, logo, info_header, info_body, url, items } = req.body;
 
   const response = await serv.createHome(
     title,
+    landing,
     logo,
     info_header,
     info_body,

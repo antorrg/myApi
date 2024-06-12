@@ -1,7 +1,5 @@
 import serv from "../../controllers/homeServ/index.js";
 
-import { info, items } from "./helpers/database.js";
-
 const getHome = async (req, res) => {
   const info = await serv.getHome();
   res.render("index", { info });
@@ -19,4 +17,8 @@ const getDetailImage = async (req, res) => {
   res.render(`card`, { img, id });
 };
 
-export { getHome, getDetailById, getDetailImage };
+export { 
+  getHome,
+  getDetailById,
+  getDetailImage 
+};

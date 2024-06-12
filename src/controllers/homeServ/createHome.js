@@ -1,6 +1,6 @@
 import {Home, Item, sequelize} from '../../db.js'
 
-const createHome = async (title1, logo1, info_header1, info_body1, url1, items1 ) => {
+const createHome = async (title1, landing1, logo1, info_header1, info_body1, url1, items1 ) => {
     let transaction;
     try {
         transaction = await sequelize.transaction();
@@ -13,6 +13,7 @@ const createHome = async (title1, logo1, info_header1, info_body1, url1, items1 
         if(product){const error = new Error('This title already exists'); error.status = 400; throw error};
         const newProduct = await Home.create({
             title:title1,
+            landing: landing1,
             logo:logo1,
             info_header:info_header1,
             info_body:info_body1,
