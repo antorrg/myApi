@@ -5,9 +5,9 @@ const homeRouter = express.Router();
 
 homeRouter.get("/", ctr.getHome);
 
-homeRouter.get("/album/:id", ctr.getDetailById);
+homeRouter.get("/detalles/:id", ctr.getDetailById);
 
-homeRouter.get("/album", ctr.getDetailImage);
+homeRouter.get("/detalles", ctr.getDetailImage);
 
 //homeRouter.get('/about', )
 

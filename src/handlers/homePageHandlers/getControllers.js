@@ -8,7 +8,7 @@ const getHome = async (req, res) => {
 const getDetailById = async (req, res) => {
   const { id } = req.params;
   const response = await serv.getById(id);
-  res.render(`album`, response);
+  res.render(`detalles`, response);
 };
 //{info, items}
 const getDetailImage = async (req, res) => {

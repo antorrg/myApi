@@ -25,7 +25,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 app.use(express.static(path.join(__dirname, 'views')))
 app.use(express.static(path.join(__dirname, "public")));
-app.use('/album/assets', express.static(path.join(__dirname, 'public/assets')));
+app.use('/detalles/assets', express.static(path.join(__dirname, 'public/assets')));
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(midd.validJson)
