@@ -1,6 +1,6 @@
 import express from "express";
 import h from "../handlers/userHandlers/index.js";
-import createHolderMidd from "../middlewares/homeMiddlewares/secureMidd/createHolderMidd.js";
+import createHolderMidd from "../middlewares/holderMiddlewares/createHolderMidd.js";
 const holderRouter = express.Router();
 
 holderRouter.post("/hold/create", createHolderMidd, h.createUserCtr)

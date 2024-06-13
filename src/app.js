@@ -13,12 +13,13 @@ console.log(__dirname)
 const app = express();
 
 app.use(morgan('dev'))
-app.use(helmet.contentSecurityPolicy({
-    directives: {
-        defaultSrc: ["'self'"],
-        imgSrc: ["'self'", 'https://res.cloudinary.com']
-    }
-}))
+// app.use(helmet.contentSecurityPolicy({
+//     directives: {
+//         defaultSrc: ["'self'"],
+//         imgSrc: ["'self'", 'https://res.cloudinary.com'],
+        
+//     }
+// }))
 app.use(cors())
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");

@@ -1,6 +1,6 @@
 import {Holder} from '../../db.js'
 import bcrypt from 'bcrypt'
-import jwt from '../../middlewares/homeMiddlewares/secureMidd/jwtValid.js'
+import jwt from '../../middlewares/holderMiddlewares/secureMidd/jwtValid.js'
 import holderParser from './helpers/holderParser.js';
 
 

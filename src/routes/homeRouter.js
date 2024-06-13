@@ -1,5 +1,5 @@
 import express from "express";
-import ctr from "../handlers/homeHandlers/index.js";
+import ctr from "../handlers/homePageHandlers/index.js";
 import mid from "../middlewares/homeMiddlewares/index.js";
 const homeRouter = express.Router();
 

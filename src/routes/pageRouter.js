@@ -1,6 +1,5 @@
 import express from 'express'
-import ctr from "../handlers/homeHandlers/index.js";
-import * as ff from "../controllers/homeServ/getHome.js";
+import ctr from "../handlers/homePageHandlers/index.js";
 import mid from "../middlewares/homeMiddlewares/index.js";
 const pageRouter = express.Router()
 

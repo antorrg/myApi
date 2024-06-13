@@ -1,5 +1,5 @@
 import {Home, Item} from '../../db.js'
-import homeCleaner from '../../utils/cleaners/homeCleaner.js'
+import homeCleaner from './helpers/homeCleaner.js'
 
 const getHome = async () => {
     try {

@@ -15,7 +15,7 @@ export default (sequelize) => {
             type: DataTypes.TEXT,
             allowNull: false,
           },
-        deleteAt:{
+        enable:{
           type: DataTypes.BOOLEAN,
           defaultValue:false
       } 
