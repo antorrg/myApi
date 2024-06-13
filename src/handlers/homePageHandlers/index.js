@@ -11,9 +11,9 @@ export default {
     delController : eh.catchAsync(delController),
     updController : eh.catchAsync(updController),
     detailUpdController: eh.catchAsync(detailUpdController),
-    getHome : eh.catchAsync(getHome),
-    getDetailById : eh.catchAsync(getDetailById),
-    getDetailImage: eh.catchAsync(getDetailImage),
+    getHome : eh.catchAsyncMVC(getHome),
+    getDetailById : eh.catchAsyncMVC(getDetailById),
+    getDetailImage: eh.catchAsyncMVC(getDetailImage),
     getPageHand : eh.catchAsync(getPageHand), 
     getPageById : eh.catchAsync(getPageById),
 };

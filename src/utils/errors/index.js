@@ -3,6 +3,7 @@ import customError from './customError.js'
 import errorEndWare from './errorEndWare.js'
 import validJson from './validJson.js'
 import lostRoute from './lostRoute.js'
+import catchAsyncMVC from './catchAsyncMVC.js'
 
 export default {
     catchAsync,
@@ -10,4 +11,5 @@ export default {
     errorEndWare,
     validJson,
     lostRoute,
+    catchAsyncMVC,
 };
