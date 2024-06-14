@@ -35,5 +35,5 @@ const aux = (info, detailItem,)=>{
 
 export  {
     homeCleaner,
-   aux,
+    aux,
 };
