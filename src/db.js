@@ -2,8 +2,8 @@ import {Sequelize} from 'sequelize'
 import models from './models/index.js'
 import env from './envConfig.js'
 
-const sequelize = new Sequelize(`postgres://${env.ConnectDb}`,{
- logging:false,
+const sequelize = new Sequelize(`${env.RailwayDb}`,{
+ logging:false,             //LocalDb o RailwayDb
  native: false,
 });
 // const sequelize = new Sequelize(`${env.RenderDb}`, {
