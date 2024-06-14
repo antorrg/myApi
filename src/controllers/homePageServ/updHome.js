@@ -1,6 +1,6 @@
 import {Home, Item} from '../../db.js'
 
-export const updHome = async ({id, newData}) => {
+export const updHome = async (id, newData) => {
     try {
         const homeFound = await Home.findByPk(id);
         if(!homeFound){const error = new Error('Unexpected error, page not found'); error.status = 500; throw error}
@@ -21,13 +21,9 @@ export const updHome = async ({id, newData}) => {
     }
 }
 
-export const updItem = async ({id, newData})=>{
+export const updItem = async (id, newData)=>{
     try {
-        const itemFound = await Item.findByPk(id, {
-            where: {
-                deleteAt: false,
-            }
-        });
+        const itemFound = await Item.findByPk(id);
     if(!itemFound){const error = new Error('Unexpected error, item not found'); error.status = 500; throw error}
     const parsedData = {
         img: newData.img,

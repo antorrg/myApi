@@ -1,10 +1,11 @@
+import truncateText from "./truncateText.js";
 
 const homeCleaner = (data, isObj)=>{
     return isObj? cleaner(data, true): data.map((dat)=>cleaner(dat, false))
 }
 
 const cleaner = (cont, bl)=>{
-     const items  = cont.Items.map((it)=> aux(it))
+     const items  = cont.Items.map((it)=> aux(it, false))
     const info = {
         id:cont.id,
         title:cont.title,
@@ -19,14 +20,20 @@ const cleaner = (cont, bl)=>{
       
     
 };
-const aux = (info)=>{
+const aux = (info, detailItem,)=>{
+    let trunc = detailItem? info.text : truncateText(info.text, 12)
     return {
         id: info.id,
         img: info.img,
-        text: info.text,
+        text: trunc,
         homeId: info.HomeId,
         enable: info.enable,
     }
 };
 
-export default homeCleaner;
+
+
+export  {
+    homeCleaner,
+   aux,
+};

@@ -71,6 +71,7 @@ html(lang="es")
   .modal.modal-tour.position-static.d-block.modal-custom.py-5(tabindex="-1", role="dialog", id="modalTour")
         .modal-body.p-5.text-center
           img.d-block.mx-auto.mb-4(src=`${img}`, alt="image not found", style="max-width: 1000px;")
-          a.btn.btn-lg.btn-primary.mt-3.mx-auto.w-50(href=`/detalles/${id}`) Cerrar
+          p.text-muted=`${item.text}`
+          a.btn.btn-lg.btn-primary.mt-3.mx-auto.w-50(href=`/detalles/${item.homeId}`) Cerrar
   script(src="/assets/dist/js/bootstrap.bundle.min.js")
 

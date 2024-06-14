@@ -14,5 +14,12 @@ const createController = async (req, res) => {
   );
   res.status(201).json(response);
 };
-
-export default createController;
+ const createItemController = async (req, res) => {
+   const {img, text, id} = req.body;
+   const response = await serv.addNewItem(img, text, id)
+   res.status(201).json(response)
+ }
+export {
+createController,
+createItemController,
+};

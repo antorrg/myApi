@@ -1,5 +1,5 @@
 import {Home, Item} from '../../db.js'
-import homeCleaner from './helpers/homeCleaner.js'
+import {homeCleaner, aux} from './helpers/homeCleaner.js'
 
 const getHome = async () => {
     try {
@@ -14,7 +14,7 @@ const getHome = async () => {
            },
         ],
         })
-        if(dataFound.length === 0){const error = new Error('Data not found'); error.status = 404; throw error;}
+        if(dataFound.length === 0){const error = new Error('Dato no hallado'); error.status = 404; throw error;}
         const data = homeCleaner(dataFound, false)
         return data
       
@@ -36,15 +36,24 @@ const getById = async (id) => {
                 }
             ]
         })
-        if(!data){const error = new Error('Data not found'); error.status = 404; throw error;}
+        if(!data){const error = new Error('Dato no hallado'); error.status = 404; throw error;}
         const dataFound = homeCleaner(data, true)
         return dataFound
     } catch (error) {
         throw error;
     }
 }
-const getDetail = async (arg) => {
-    //const name = await 
+const getDetail = async (id) => {
+    try {
+        const itemFound = await Item.findByPk(id,{
+            where: {enable:true,}
+        });
+        if(!itemFound){const error = new Error('Dato no hallado'); error.status = 404; throw error;}
+        const item = aux(itemFound, true)
+        return item;
+    } catch (error) {
+        throw error;
+    }
 }
 
 export {

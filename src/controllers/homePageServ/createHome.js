@@ -1,6 +1,6 @@
 import {Home, Item, sequelize} from '../../db.js'
 
-const createHome = async (title1, landing1, logo1, info_header1, info_body1, url1, items1 ) => {
+export const createHome = async (title1, landing1, logo1, info_header1, info_body1, url1, items1 ) => {
     let transaction;
     try {
         transaction = await sequelize.transaction();
@@ -40,4 +40,21 @@ const createHome = async (title1, landing1, logo1, info_header1, info_body1, url
     }
 }
 
-export default createHome
+export const addNewItem = async (img, text, id) => {
+    try {
+        const homeFound = Home.findOne({
+            where : {
+                id : id
+            }
+        });
+        if(!homeFound){const error = new Error('Ocurrio un error, objeto no encontrado'); error.status = 500; throw error};
+      const newItem = await Item.create({
+         img:img,
+         text: text,
+      })
+      await homeFound.addItem(newItem)
+      return homeFound
+    } catch (error) {
+        throw error;
+    }
+}

@@ -13,8 +13,8 @@ const getDetailById = async (req, res) => {
 //{info, items}
 const getDetailImage = async (req, res) => {
   const { img, id } = req.query;
-  //console.log('query ', img, id)
-  res.render(`card`, { img, id });
+  const item = await serv.getDetail(id)
+  res.render(`card`, { img, item });
 };
 
 export { getHome, getDetailById, getDetailImage };

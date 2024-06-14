@@ -17,7 +17,7 @@ export default (sequelize) => {
           },
         enable:{
           type: DataTypes.BOOLEAN,
-          defaultValue:false
+          defaultValue:true
       } 
     });
 };
