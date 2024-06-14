@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 //import env from './envConfig.js'
 
-const sequelize = new Sequelize(`${process.env.DB_DATABASE}`,{
+const sequelize = new Sequelize(process.env.DATABASE_URL,{
  logging:false,          
  native: false,
 });
