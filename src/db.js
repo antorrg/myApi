@@ -1,9 +1,11 @@
 import {Sequelize} from 'sequelize'
 import models from './models/index.js'
-import env from './envConfig.js'
+import dotenv from 'dotenv'
+dotenv.config()
+//import env from './envConfig.js'
 
-const sequelize = new Sequelize(`${env.RailwayDb}`,{
- logging:false,             //LocalDb o RailwayDb
+const sequelize = new Sequelize(`${process.env.DB_DATABASE}`,{
+ logging:false,          
  native: false,
 });
 // const sequelize = new Sequelize(`${env.RenderDb}`, {
