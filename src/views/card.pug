@@ -4,8 +4,7 @@ html(lang="es")
     meta(charset="utf-8")
     meta(name="viewport", content="width=device-width, initial-scale=1")
     meta(name="description", content="")
-    meta(name="author", content="Mark Otto, Jacob Thornton, and Bootstrap contributors")
-    meta(name="generator", content="Hugo 0.104.2")
+    meta(name="author", content="Antorrg. Antonio Ricardo Rodriguez Gramajo")
     title Detalle proyecto
     link(href="/assets/dist/css/bootstrap.min.css", rel="stylesheet")
     style.
@@ -57,21 +56,25 @@ html(lang="es")
         background-color rgba(0, 0, 0, 0.03);
       }
       .modal-dialog-custom {
-        width 100%;/* Ajusta este valor según necesites */
+        max-width 100%; /* Ajusta este valor según necesites */
       }
       .modal-content {
         background-color #f8f9fa;
         overflow hidden;
       }
-      .modal-body img {
-        max-width 90%;
-        height auto;
+     .modal-body img {
+        max-width: 100%;
+        height: auto;
+        max-height: 100vh; /* Ajusta la altura máxima según necesites */
+        margin: 0 auto; /* Centra la imagen horizontalmente */
+        display: block; /* Evita espacios innecesarios debajo de la imagen */
       }
   body
-  .modal.modal-tour.position-static.d-block.modal-custom.py-5(tabindex="-1", role="dialog", id="modalTour")
-        .modal-body.p-5.text-center
-          img.d-block.mx-auto.mb-4(src=`${img}`, alt="image not found", style="max-width: 1000px;")
-          p.text-muted=`${item.text}`
-          a.btn.btn-lg.btn-primary.mt-3.mx-auto.w-50(href=`/detalles/${item.homeId}`) Cerrar
+    .modal.modal-tour.position-static.d-block.modal-custom.py-5(tabindex="-1", role="dialog", id="modalTour")
+      .modal-dialog.modal-dialog-centered.modal-xl
+        .modal-content
+          .modal-body.p-5.text-center
+            img.d-block.mx-auto.mb-4(src=`${img}`, alt="image not found")
+            p.text-muted=`${item.text}`
+            a.btn.btn-lg.btn-primary.mt-3.mx-auto.w-50(href=`/detalles/${item.homeId}`) Cerrar
   script(src="/assets/dist/js/bootstrap.bundle.min.js")
-
