@@ -13,19 +13,19 @@ console.log(__dirname)
 const app = express();
 
 app.use(morgan('dev'))
-// app.use(helmet.contentSecurityPolicy({
-//     directives: {
-//         defaultSrc: ["'self'"],
-//         imgSrc: ["'self'", 'https://res.cloudinary.com'],
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ["'self'"],
+        imgSrc: ["'self'", 'https://res.cloudinary.com', 'data:'],
         
-//     }
-// }))
+    }
+}))
 app.use(cors())
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 app.use(express.static(path.join(__dirname, 'views')))
 app.use(express.static(path.join(__dirname, "public")));
-app.use('/detalles/assets', express.static(path.join(__dirname, 'public/assets')));
+app.use('/detalles', express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(midd.validJson)
