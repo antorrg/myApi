@@ -2,7 +2,7 @@ import {Sequelize} from 'sequelize'
 import models from './models/index.js'
 import env from './envConfig.js'
 
-const sequelize = new Sequelize(env.LocalDb,{
+const sequelize = new Sequelize(env.RailwayDb,{
  logging:false,          
  native: false,
 });
