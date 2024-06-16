@@ -13,7 +13,7 @@ homeRouter.get("/detalles", mid.protectRoute, ctr.getDetailImage);
 
 homeRouter.get('/contacto', ctr.getContact)
 
-//homeRouter.get('/about', )
+homeRouter.get('/acerca', ctr.aboutMe)
 
 
 export default homeRouter;

@@ -2,7 +2,7 @@ import eh from '../../utils/errors/index.js'
 import {createController, createItemController} from './createController.js'
 import delController from './delController.js'
 import {updController, detailUpdController} from './updController.js'
-import {getHome, getDetailById, getDetailImage, getContact } from './getControllers.js'
+import {getHome, getDetailById, getDetailImage, getContact, aboutMe } from './getControllers.js'
 import {getPageHand, getPageById, getItemById} from './getPageController.js'
 
 export default {
@@ -16,6 +16,7 @@ export default {
     getDetailById : eh.catchAsyncMVC(getDetailById),
     getDetailImage: eh.catchAsyncMVC(getDetailImage),
     getContact : eh.catchAsyncMVC(getContact),
+    aboutMe: eh.catchAsyncMVC(aboutMe),
     getPageHand : eh.catchAsync(getPageHand), 
     getPageById : eh.catchAsync(getPageById),
     getItemById : eh.catchAsync(getItemById)

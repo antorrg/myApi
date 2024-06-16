@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('/images/cieloError.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-color: #fefffc;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 400vh;
+}
+.title {
+   font-size: 4em;
+   color:#ffffff;
+    margin-top: 1rem;
+}
+/* Container Styles */
+.container {
+    background-color: #ffffff;
+    padding: 1.2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    max-width: 35rem;
+    margin: 20px auto;
+}
+
+/* Heading Styles */
+h1, h2 {
+    color: #333;
+}
+
+/* Link Styles */
+a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* List Styles */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #eaeaea;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* Image Styles */
+img {
+    margin: 5px;
+    vertical-align: middle;
+}
+.skills {
+    width: 85vw;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 1.25rem; 
+}
+
+.links {
+    width: 85vw;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    grid-template-rows: 1fr;
+    grid-gap: 1.25rem; 
+}
