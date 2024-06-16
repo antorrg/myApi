@@ -17,4 +17,9 @@ const getDetailImage = async (req, res) => {
   res.render(`card`, { img, item });
 };
 
-export { getHome, getDetailById, getDetailImage };
+const getContact = async (req, res)=>{
+  res.render('contact')
+}
+
+
+export { getHome, getDetailById, getDetailImage, getContact };

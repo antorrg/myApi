@@ -11,6 +11,8 @@ homeRouter.get("/detalles/:id", mid.protectParam, mid.protectRoute, ctr.getDetai
 
 homeRouter.get("/detalles", mid.protectRoute, ctr.getDetailImage);
 
+homeRouter.get('/contacto', ctr.getContact)
+
 //homeRouter.get('/about', )
 
 

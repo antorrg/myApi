@@ -1,3 +1,5 @@
+
+
 doctype html
 html(lang="es")
   head
@@ -7,9 +9,9 @@ html(lang="es")
     meta(name="author" content="Antorrg. Antonio Ricardo Rodriguez Gramajo")
     meta(name="generator" content="Hugo 0.104.2")
     title Antorrg
-    link(rel="icon", href="/images/favicon.png")
-    link(href="/css/bootstrap.min.css" rel="stylesheet")
-    link(href="/css/carousel.css" rel="stylesheet")
+    link(rel="icon", href="/images/favicon.png") 
+    link(href="/css/bootstrap.min.css" rel="stylesheet") 
+    link(href="/css/carousel.css" rel="stylesheet") 
     style.
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -67,7 +69,7 @@ html(lang="es")
               li.nav-item
                 a.nav-link.active(aria-current="page" href="#") Sobre mi:
               li.nav-item
-                a.nav-link(href="/contacto") Contacteme:
+                p.nav-link(href="#") Contacteme:
     main
       #myCarousel.carousel.slide(data-bs-ride="carousel")
         .carousel-indicators
@@ -80,25 +82,25 @@ html(lang="es")
             .container
               .carousel-caption.text-start
                 h1 Rick and Morty.
-                p Este es mi primer sitio web, encontrará más detalles abajo.
+                p Este es el primer sitio web que hice, encontrará mas detalles abajo.
                 p
-                  a.btn.btn-lg.btn-primary(href="https://rick-and-morty2024.vercel.app/" target="_blank") Visite el sitio"
+                  a.btn.btn-lg.btn-primary(href="https://rick-and-morty2024.vercel.app/" target="_blank") Ir a "Rick and Morty 2024"
           .carousel-item
-            img(src="images/proyectoCarrusel2.png" class="d-block w-100" alt="Gameworld eccomerce")
+            img(src="images/proyectoCarrusel2.png" class="d-block w-100" alt="Gameworld eccomerce") 
             .container
               .carousel-caption
                 h1 Gameworld e-commerce.
                 p Un e-commerce realizado por el equipo de estudiantes de Henry.
                 p
-                  a.btn.btn-lg.btn-primary(href="https://gameworldeccomerce.vercel.app" target="_blank") Visite el sitio
+                  a.btn.btn-lg.btn-primary(href="https://gameworldeccomerce.vercel.app" target="_blank") Ir a Gameworld 
           .carousel-item
-            img(src="images/proyectoCarrusel3.png" class="d-block w-100" alt="Boscarol Hnos")
+            img(src="images/proyectoCarrusel3.png" class="d-block w-100" alt="Boscarol Hnos") 
             .container
               .carousel-caption.text-end
                 h1 Boscarol Hnos.
-                p Landing page y  administración de vehículos y clientes para un taller mecánico.
+                p Landing page y sistema de administracion de vehiculos y clientes creado para un taller mecanico.
                 p
-                  a.btn.btn-lg.btn-primary(href="https://deployprueba.vercel.app" target="_blank") Visite el sitio
+                  a.btn.btn-lg.btn-primary(href="https://deployprueba.vercel.app" target="_blank") Ir a Boscarol Hnos
         button.carousel-control-prev(type="button", data-bs-target="#myCarousel", data-bs-slide="prev")
           span.carousel-control-prev-icon(aria-hidden="true")
           span.visually-hidden Previous
@@ -114,10 +116,11 @@ html(lang="es")
               p= inf.infoHeader
               p
                 a.btn.btn-secondary(href=`/detalles/${inf.id}`) Ver detalles &raquo;
+
         hr.featurette-divider
         .row.featurette
           .col-md-7
-            h2.featurette-heading.fw-normal.lh-1 First featurette heading.
+            h2.featurette-heading.fw-normal.lh-1 First featurette heading. 
               span.text-muted It’ll blow your mind.
             p.lead Some great placeholder content for the first featurette here. Imagine some exciting prose here.
           .col-md-5
@@ -127,21 +130,14 @@ html(lang="es")
               text(x="50%", y="50%", fill="#aaa", dy=".3em") 500x500
         hr.featurette-divider
         .row.featurette
-          .col-md-7
-            h2.featurette-heading.fw-normal.lh-1 One more for good measure.
-              span.text-muted And lastly, this one.
-            p.lead And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.
-          .col-md-5
-            svg.bd-placeholder-img.bd-placeholder-img-lg.featurette-image.img-fluid.mx-auto(width="500", height="500", xmlns="http://www.w3.org/2000/svg", role="img", aria-label="Placeholder: 500x500", preserveAspectRatio="xMidYMid slice", focusable="false")
-              title Placeholder
-              rect(width="100%", height="100%", fill="#eee")
-              text(x="50%", y="50%", fill="#aaa", dy=".3em") 500x500
+          .col-md-7.order-md-2
+            h2.featurette
     footer.text-muted.py-5
       .container
         p.float-end.mb-1
           a(href="#") Volver arriba
         p.mb-1 Esta es una copia de boostrap pronto le vamos a cambiar el nombre.
         p.mb-0
-          | New to Bootstrap?
-          a(href="/") Visit the homepage
-  script(src="/js/bootstrap.bundle.min.js")
+          | New to Bootstrap? 
+          a(href="/") Visit the homepage    
+  script(src="js/bootstrap.bundle.min.js")
