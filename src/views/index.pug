@@ -20,7 +20,7 @@ html(lang="es")
       }
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
-          font-size: 3.5rem;
+          font-size: 3.2rem;
         }
       }
       .b-example-divider {
@@ -55,6 +55,19 @@ html(lang="es")
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
       }
+      @media (max-width: 767px) {
+        .carousel-caption h1 {
+          font-size: 1.2rem;
+          
+        }
+        .carousel-caption p {
+          font-size: 0.7rem;
+        }
+        .carousel-caption .btn {
+          font-size: 0.825rem;
+          padding: 0.3rem 0.8rem;
+        }
+      }
   body(style="padding-top: 4.5rem;")
     header
       nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
@@ -67,7 +80,7 @@ html(lang="es")
               li.nav-item
                 a.nav-link.active(aria-current="page" href="/acerca") Sobre mi:
               li.nav-item
-                a.nav-link(href="/contacto") Contacteme:
+                a.nav-link.active(href="/contacto") Contacteme:
     main
       #myCarousel.carousel.slide(data-bs-ride="carousel")
         .carousel-indicators
@@ -139,7 +152,7 @@ html(lang="es")
     footer.text-muted.py-5
       .container
         p.float-end.mb-1
-          a(href="#") Volver arriba
+          a.btn.btn-primary(href="/") Volver
         p.mb-1 Esta es una copia de boostrap pronto le vamos a cambiar el nombre.
         p.mb-0
           | New to Bootstrap?
