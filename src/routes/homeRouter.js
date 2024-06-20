@@ -15,5 +15,6 @@ homeRouter.get('/contacto', ctr.getContact)
 
 homeRouter.get('/acerca', ctr.aboutMe)
 
+homeRouter.post('/sendPost', ctr.postContact)
 
 export default homeRouter;

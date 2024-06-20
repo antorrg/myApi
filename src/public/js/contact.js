@@ -39,26 +39,34 @@ document.addEventListener('DOMContentLoaded', function () {
         const confirmed = confirm("¿Desea enviarnos un email? Confirme su accion");
         if (confirmed) {
             try {
-                console.log("enviando post", input);
-                // Simulación del envío del correo electrónico (aquí deberías implementar la lógica real)
+                //console.log("enviando post", input);
+                const response = await fetch('/sendPost', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(input)
+                });
+              
+                if (!response.ok) {
+                    throw new Error('Error en la solicitud');
+                }
+
+                const result = await response.json();
+                showAlert(result.message, "success");
+
                 setTimeout(() => {
-                    // Limpia los campos del formulario
                     input = { ...initialInput };
                     document.getElementById('email').value = '';
                     document.getElementById('subject').value = '';
                     document.getElementById('message').value = '';
-    
-                    // Muestra la alerta de éxito (puedes usar otra forma de alerta en lugar de alert())
-                    showAlert("Mensaje enviado exitosamente", "success");
-    
-                    // Redirige a la página principal después de 2 segundos
                     setTimeout(() => {
                         window.location.href = '/';
-                    }, 2000);
+                    }, 1000);
                 }, 1000); 
+
             } catch (error) {
                 console.error(error);
-                showAlert("Acontecio un error, mensaje no enviado", "error");
+                //showAlert("Aconteció un error, mensaje no enviado", "error");
+                alert('acontecio un error', error)
             }
         }
     };

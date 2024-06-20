@@ -1,6 +1,35 @@
+import nodemailer from 'nodemailer'
+import env from '../../envConfig.js'
 
 
-const sendEmail = async (req, res) => {
-    const info = await serv.getHome();
-    res.render("index", { info });
-  };
+
+export default async function postContact (req, res) {
+  const { email, subject, message } = req.body;
+  console.log(email);
+  //este console.log de arriba me da que la info es correcta: email es el remitente, 
+  let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: env.GmailUser,
+        pass: env.GmailPass,
+    },
+    tls: {
+      rejectUnauthorized: false
+  }
+});
+
+// Configuración del correo electrónico
+let mailOptions = {
+    from: email,
+    to: env.GmailUser,
+    subject: subject,
+    text: message
+};
+  try {
+      await transporter.sendMail(mailOptions);
+      res.status(200).json({'message': 'Mensaje enviado exitosamente'})
+  } catch (error) {
+      console.error('Error al enviar el correo:', error);
+      res.status(400).json({error: error.message})
+  }
+};

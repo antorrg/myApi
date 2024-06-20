@@ -4,6 +4,7 @@ import delController from './delController.js'
 import {updController, detailUpdController} from './updController.js'
 import {getHome, getDetailById, getDetailImage, getContact, aboutMe } from './getControllers.js'
 import {getPageHand, getPageById, getItemById} from './getPageController.js'
+import postContact from './postContact.js'
 
 export default {
     
@@ -17,7 +18,9 @@ export default {
     getDetailImage: eh.catchAsyncMVC(getDetailImage),
     getContact : eh.catchAsyncMVC(getContact),
     aboutMe: eh.catchAsyncMVC(aboutMe),
+    postContact,
     getPageHand : eh.catchAsync(getPageHand), 
     getPageById : eh.catchAsync(getPageById),
-    getItemById : eh.catchAsync(getItemById)
+    getItemById : eh.catchAsync(getItemById),
+
 };
