@@ -3,6 +3,7 @@ import userDel from './userDel.js'
 import {getAllUsers, getUsersById} from './userGet.js'
 import userLog from './userLog.js'
 import userUpd from './userUpd.js'
+import {verifyPass, userChangePass} from './userChangePass.js'
 
 export default {
     userCreate,
@@ -11,4 +12,6 @@ export default {
     getUsersById,
     userLog,
     userUpd,
-}
+    verifyPass,
+    userChangePass
+};

@@ -4,6 +4,7 @@ import delUserCtr from './delUserCtr.js'
 import loginUserCtr from './loginUserCtr.js'
 import updUserCtr from './updUserCtr.js'
 import {getUserCtr, getDetailCtr} from './getUserCtr.js'
+import {verifyPassCtr, changePassCtr}from './changePassCtr.js'
 
 export default {
     createUserCtr:  eh.catchAsync(createUserCtr),
@@ -11,5 +12,7 @@ export default {
     loginUserCtr:   eh.catchAsync(loginUserCtr),
     updUserCtr:     eh.catchAsync(updUserCtr),
     getUserCtr:     eh.catchAsync(getUserCtr),
-    getDetailCtr :  eh.catchAsync(getDetailCtr)
+    getDetailCtr :  eh.catchAsync(getDetailCtr),
+    changePassCtr:  eh.catchAsync(changePassCtr),
+    verifyPassCtr:  eh.catchAsync(verifyPassCtr),
 }

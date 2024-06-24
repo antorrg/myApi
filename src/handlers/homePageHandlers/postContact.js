@@ -8,6 +8,10 @@ export default async function postContact (req, res) {
   console.log(email);
   //este console.log de arriba me da que la info es correcta: email es el remitente, 
   let transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    requireTLS: true,
     service: 'gmail',
     auth: {
         user: env.GmailUser,
@@ -23,9 +27,11 @@ let mailOptions = {
     from: email,
     to: env.GmailUser,
     subject: subject,
-    text: message
+    text: message,
+    replyTo: email
 };
   try {
+      console.log({mailOptions})
       await transporter.sendMail(mailOptions);
       res.status(200).json({'message': 'Mensaje enviado exitosamente'})
   } catch (error) {
