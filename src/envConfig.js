@@ -1,13 +1,17 @@
 import dotenv from 'dotenv' 
 dotenv.config()
+const envFile = process.env.NODE_ENV === 'production' ? '.env.production': '.env.development';
+dotenv.config({ path: envFile });
 
 const {PORT, DB_USER, DB_PASSWORD,DB_HOST, DB_NAME, DB_DEPLOY, USER_IMG, SECRET_KEY, DATABASE_URL, GMAIL_USER, GMAIL_APP_PASS,}=process.env;
 
+const LocalDb =`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`
+const ConnectDb = process.env.NODE_ENV==='production'? DATABASE_URL:  LocalDb ;
+const Status= process.env.NODE_ENV==='production'? 'in production': 'in development';
 export default {
     Port : PORT,
-    LocalDb : `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
-    RailwayDb: DATABASE_URL,
-    RenderDb : DB_DEPLOY,
+    Status,
+    ConnectDb,
     UserImg : USER_IMG,
     SecretKey : SECRET_KEY,
     GmailUser: GMAIL_USER,

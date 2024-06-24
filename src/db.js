@@ -2,13 +2,12 @@ import {Sequelize} from 'sequelize'
 import models from './models/index.js'
 import env from './envConfig.js'
 
-const sequelize = new Sequelize(env.RailwayDb,{
+const sequelize = new Sequelize(env.ConnectDb,{
  logging:false,          
  native: false,
 });
 
-//LocalDb
-//RailwayDb
+
 // const sequelize = new Sequelize(`${env.RenderDb}`, {
 //     logging: false, // set to console.log to see the raw SQL queries
 //      native: false, // lets Sequelize know we can use pg-native for ~30% more speed
