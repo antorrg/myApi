@@ -42,11 +42,7 @@ export const createHome = async (title1, landing1, logo1, info_header1, info_bod
 
 export const addNewItem = async (img, text, id) => {
     try {
-        const homeFound = Home.findOne({
-            where : {
-                id : id
-            }
-        });
+        const homeFound = await Home.findByPk(id);
         if(!homeFound){const error = new Error('Ocurrio un error, objeto no encontrado'); error.status = 500; throw error};
       const newItem = await Item.create({
          img:img,

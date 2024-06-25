@@ -6,8 +6,10 @@ dotenv.config({ path: envFile });
 const {PORT, DB_USER, DB_PASSWORD,DB_HOST, DB_NAME, DB_DEPLOY, USER_IMG, SECRET_KEY, DATABASE_URL, GMAIL_USER, GMAIL_APP_PASS,}=process.env;
 
 const LocalDb =`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`
+
 const ConnectDb = process.env.NODE_ENV==='production'? DATABASE_URL:  LocalDb ;
 const Status= process.env.NODE_ENV==='production'? 'in production': 'in development';
+
 export default {
     Port : PORT,
     Status,
