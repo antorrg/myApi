@@ -9,17 +9,17 @@ import midd from './utils/errors/index.js'
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 //const __dirname = path.dirname(new URL(import.meta.url).pathname);
-console.log(__dirname)
+//console.log(__dirname)
 const app = express();
 
 app.use(morgan('dev'))
-// app.use(helmet.contentSecurityPolicy({
-//     directives: {
-//         defaultSrc: ["'self'"],
-//         imgSrc: ["'self'", 'https://res.cloudinary.com', 'data:'],
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ["'self'"],
+        imgSrc: ["'self'", 'https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images/', 'data:'],
         
-//     }
-// }))
+    }
+}))
 app.use(cors())
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
