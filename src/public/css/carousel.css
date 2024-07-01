@@ -75,6 +75,17 @@ body {
   letter-spacing: -.05rem;
 }
 
+.titular-block {
+  bottom: 0;
+  z-index: 10;
+  margin-top:0;
+  margin-bottom: 0;
+  padding: 2rem;
+  text-align: left;
+  border-radius: 10px; /* Bordes redondeados */
+  color: black; /* Asegúrate de que el texto sea visible */
+}
+
 /* rtl:end:remove */
 
 /* RESPONSIVE CSS
