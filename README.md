@@ -2,6 +2,13 @@
 
 Proyecto con Base de datos PostgresSQL. Iniciado el día 05/06/2024
 
+## Variables de entorno:
+El proyecto esta preparado para trabajar con dos variables de entorno en desarrollo, y por supuesto, una sola en producción, para eso utliza una libreria llamada cross-env que permite el enrutado al inicio en los sistemas windows, por lo tanto, es multiplataforma. 
+
+Deben declararse en desarrollo dos variables de entorno: `.env.develpment` y `.env.production` con el modelo de `.env.example` la diferencia está en que en la varible de producción la opcion que se va a activar es `DATABASE_URL`que es la base de datos de produccion (en este caso raillway) mientras que en desarrollo seran las varibles de base de datos local.
+
+Esto fue implementado para que en desarrollo no se suban cambios a la base de datos en la nube, y además es un modelo a seguir en el caso de implementar tests de integracion ya que para ello es necesario hacer lo mismo a fin de preservar la integridad de los datos de desarrollo.
+
 Estas son las rutas y sus respectivas caracteristicas:
 
 ## Rutas:
