@@ -67,6 +67,11 @@
                 padding: 0.3rem 0.8rem;
             }
         }
+        #pdf-viewer {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ccc;
+        }
     </style>
 </head>
 <body style="padding-top: 4.5rem;">
@@ -162,30 +167,28 @@
                 <% }); %>
             </div>
             <hr class="featurette-divider">
-            <div class="row featurette">
+               <div class="row featurette">
                 <div class="col-md-7">
-                    <h2 class="featurette-heading fw-normal lh-1">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-                    <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
+                    <h2 class="featurette-heading fw-normal lh-1">Descargue mi CV <span class="text-muted"></span></h2>
+                    <p class="lead">Aquí puede descargar y visualizar mi currículum.</p>
+                    <a class="btn btn-secondary" href="/archives/CV-AntonioRodriguez28-05-24.pdf" download>Descargar CV</a>
                 </div>
                 <div class="col-md-5">
-                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
-                        <title>Placeholder</title>
-                        <rect width="100%" height="100%" fill="#eee"></rect>
-                        <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-                </img>
+                    <img id="pdf-viewer" src="/images/CV.png" alt="Not found">
                 </div>
             </div>
-            <hr class="featurette-divider">
+        </div>
+        <hr class="featurette-divider">
     </main>
     <footer class="text-muted py-5">
         <div class="container">
             <p class="float-end mb-1">
                 <a class="btn btn-primary" href="/">Volver</a>
             </p>
-            <p class="mb-1">Esta es una copia de boostrap pronto le vamos a cambiar el nombre.</p>
+            <p class="mb-1">Esta pagina esta basada en los estilos de bootstrap.</p>
             <p class="mb-0">
-                New to Bootstrap?
-                <a href="/">Visit the homepage</a>
+                Bootstrap le resulta nuevo?
+                <a href="https://getbootstrap.com/" target="_blank">Visite su pagina</a>
             </p>
         </div>
     </footer>
