@@ -15,7 +15,7 @@ export default {
     Port : PORT,
     Status,
     ConnectDb,
-    optionRender: process.env.NODE_ENV==='development'? false : true,
+    optionRender: process.env.NODE_ENV==='development'? false :false,
     UserImg : USER_IMG,
     SecretKey : SECRET_KEY,
     GmailUser: GMAIL_USER,
