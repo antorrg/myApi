@@ -1,8 +1,9 @@
 import serv from "../../controllers/homePageServ/index.js";
 
 export const getHome = async (req, res) => {
+  console.log('soy sesion: ', req.session.isAuthenticated)
   const info = await serv.getHome();
-  res.render("index", { info });
+  res.render("index", { info , isAuthenticated: req.session.isAuthenticated });
 };
 
 export const getDetailById = async (req, res) => {

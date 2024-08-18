@@ -1,0 +1,87 @@
+.modalContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    flex-grow: 1;
+    flex-shrink: 1;
+    background-color: rgba(175, 175, 180, 0.5); 
+    max-width: fit-content;
+    padding:2rem;
+    margin: 2rem;
+    font-size: medium;
+    /* border: solid grey 1px; */
+    border-radius: 0.5rem;
+}
+.modalSuccess {
+    background-color: #d6eece;
+    color:blue;
+    max-width: fit-content;
+    padding:1rem;
+    margin: 2rem;
+    font-size: medium;
+    border: solid rgb(36, 133, 36) 2px;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    flex-grow: 1;
+    flex-shrink: 1;
+
+}
+.modalFailed {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    flex-grow: 1;
+    flex-shrink: 1;
+    background-color: rgb(255, 255, 255);
+    color:rgb(99, 16, 20);
+    max-width: fit-content;
+    padding:2rem;
+    margin: 2rem;
+    font-size: medium;
+    border: solid rgb(162, 21, 28) 2px;
+    border-radius: 0.5rem;
+
+}
+/* Estilos usados en modales de confirmacion */
+.totalModalCont {
+    position: fixed; /* Hace que el modal esté fijo en la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 900; /* Asegúrate de que esté por encima de otros elementos */
+}
+.hidden{
+    display: none;
+  }
+
+.modalContent {
+    background-color: rgb(255, 255, 255);
+    color:rgb(99, 16, 20);
+    max-width: fit-content;
+    padding:1rem;
+    margin: 2rem;
+    font-size: medium;
+    border: solid rgb(162, 21, 28) 2px;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    flex-grow: 1;
+    flex-shrink: 1;
+    z-index: 1000;
+}

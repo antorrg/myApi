@@ -4,7 +4,7 @@ import {Holder} from '../../db.js'
 export default async function userUpd (id, newData) {
     try{
     	const holder = await Holder.findByPk(id)
-		if(!holder){const error = new Error('User not found'); error.status = 404; throw error};
+		if(!holder){const error = new Error('Usuario no hallado'); error.status = 404; throw error};
 		const nickname1 = newData.email.split('@')[0]
 		const updInfo = {
 			          email: newData.email,

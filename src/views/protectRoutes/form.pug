@@ -1,0 +1,24 @@
+extends ../layouts/loginLayout.pug
+
+block content
+  form.form-signin.w-100.m-auto#loginForm(method="POST", action="/login")
+    img.mb-4(src="/images/favicon.png", alt="", width="72", height="57")
+    h1.h3.mb-3.fw-normal Por favor, inicie sesión
+    
+    .form-floating
+      input.form-control(type="email", id="floatingInput", placeholder="name@example.com", name="email")
+      label(for="floatingInput") Correo electrónico
+    
+    .form-floating
+      input.form-control(type="password", id="floatingPassword", placeholder="Password", name="password")
+      label(for="floatingPassword") Contraseña
+    
+    .form-check.text-start.my-3
+      input.form-check-input(type="checkbox", value="remember-me", id="flexCheckDefault")
+      label.form-check-label(for="flexCheckDefault") Recuérdame
+    
+    button.w-100.btn.btn-lg.btn-primary(type="submit") Ingresar
+    
+    p.mt-5.mb-3.text-body-secondary &copy; 2024
+    
+    a.w-10.btn.btn-lg.btn-secondary(href="/") Cancelar

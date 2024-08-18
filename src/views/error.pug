@@ -1,18 +1,17 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Antorrg. Antonio Ricardo Rodriguez Gramajo">
-    <title>Error</title>
-    <link rel="icon" type="image/svg" href="/images/favicon.svg" />
-    <style>
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(name="description", content="")
+    meta(name="author", content="Antorrg. Antonio Ricardo Rodriguez Gramajo")
+    title Error
+    style.
       body {
         margin: 0;
         font-family: Arial, sans-serif;
         display: flex;
-        flex-direction: column;
+        flex-direction:column;
         justify-content: center;
         align-items: center;
         height: 100vh;
@@ -41,11 +40,7 @@
         background: white;
         color: #000;
       }
-    </style>
-  </head>
-  <body>
-    <h1>Error <%= status %></h1>
-    <p><%= message %></p>
-    <a href="/">Volver al inicio</a>
-  </body>
-</html>
+  body
+    h1 Error #{status}
+    p #{message}
+    a(href="/") Volver al inicio

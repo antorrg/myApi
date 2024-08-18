@@ -13,14 +13,15 @@ export default {
     delController : eh.catchAsync(delController),
     updController : eh.catchAsync(updController),
     detailUpdController: eh.catchAsync(detailUpdController),
+    getPageHand : eh.catchAsync(getPageHand), 
+    getPageById : eh.catchAsync(getPageById),
+    getItemById : eh.catchAsync(getItemById),
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     getHome : eh.catchAsyncMVC(getHome),
     getDetailById : eh.catchAsyncMVC(getDetailById),
     getDetailImage: eh.catchAsyncMVC(getDetailImage),
     getContact : eh.catchAsyncMVC(getContact),
     aboutMe: eh.catchAsyncMVC(aboutMe),
     postContact,
-    getPageHand : eh.catchAsync(getPageHand), 
-    getPageById : eh.catchAsync(getPageById),
-    getItemById : eh.catchAsync(getItemById),
 
 };

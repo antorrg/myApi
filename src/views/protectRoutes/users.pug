@@ -1,0 +1,33 @@
+extends ../layouts/adminLayout.pug
+
+block content
+  .album.py-5.bg-light
+    .container
+          - const chunk = (arr, size) => {
+          -   return arr.reduce((acc, _, i) => {
+          -     if (i % size) {
+          -       acc[acc.length - 1].push(arr[i]);
+          -     } else {
+          -       acc.push([arr[i]]);
+          -     }
+          -     return acc;
+          -   }, []);
+          - };
+          - const rows = chunk(users, 3);
+          each row in rows
+            .row.row-cols-1.row-cols-sm-2.row-cols-md-3.g-3
+              each user in row
+                .col
+                  .card.shadow-sm(style="width: 300px; height: 100%; margin: 1rem;")
+                    img.card-img-top(src=user.image, alt='Card image')
+                    .card-body
+                      p.card-text Email:
+                        p.card-text.text-muted.text-sm= user.email
+                      p.card-text Apodo:
+                        p.card-text.text-muted.text-sm= user.nickname
+                      p.card-text Rol:
+                        p.card-text.text-sm= user.role
+                      .d-flex.justify-content-between.align-items-center
+                        .btn-group
+                          a.btn.btn-sm.btn-outline-primary(href=`/admin`) Detalles
+                        small.text-muted

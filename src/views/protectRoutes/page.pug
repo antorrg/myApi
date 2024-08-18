@@ -1,0 +1,47 @@
+extends ../layouts/adminLayout.pug
+
+block content
+  //- h2.text-center.w-100.mt-3 Detalles
+  section.py-5.text-center.container.mt-0
+    .row.py-lg-5
+      .col-lg-6.col-md-8.mx-auto
+        h3.fw-light Proyecto #{page.info.title}
+        strong Logo:
+        img.bd-placeholder-img.rounded-circle(src=page.info.logo, width="50", height="50", alt="Placeholder")
+        strong Landing: 
+        img.bd-placeholder-img-fluid(src=page.info.landing, height="80", alt="Placeholder")
+        br
+        strong InfoHeader:
+        p= page.info.infoHeader
+        strong InfoBody:
+        p= page.info.infoBody
+        strong Url:
+        p= page.info.url 
+        p
+          a.btn.btn-primary.my-2(href="#") Editar
+          a.btn.btn-secondary.my-2(href="/admin") Volver
+  .album.py-5.bg-light
+    .container
+          - const chunk = (arr, size) => {
+          -   return arr.reduce((acc, _, i) => {
+          -     if (i % size) {
+          -       acc[acc.length - 1].push(arr[i]);
+          -     } else {
+          -       acc.push([arr[i]]);
+          -     }
+          -     return acc;
+          -   }, []);
+          - };
+          - const rows = chunk(page.items, 3);
+          each row in rows
+            .row.row-cols-1.row-cols-sm-2.row-cols-md-3.g-3
+              each item in row
+                .col
+                  .card.shadow-sm
+                    img.card-img-top(src=item.img, alt='Card image')
+                    .card-body
+                      p.card-text= item.text
+                      .d-flex.justify-content-between.align-items-center
+                        .btn-group
+                          a.btn.btn-sm.btn-outline-secondary(href=`/admin/item/${item.id}`) View
+                        small.text-muted 9 mins

@@ -1,0 +1,12 @@
+extends ../layouts/adminLayout.pug
+
+block content
+  body
+    .modal.modal-tour.position-static.d-block.modal-custom.py-5(tabindex="-1", role="dialog", id="modalTour")
+      .modal-dialog.modal-dialog-centered.modal-xl
+        .modal-content
+          .modal-body.p-5.text-center
+            img.d-block.mx-auto.mb-4(src=`${item.img}`, style="max-width: 50%;" , alt="image not found")
+            p.text-muted=`${item.text}`
+            a.btn.btn-lg.btn-primary.mt-3.mx-auto.w-20(href=`/admin/page/${item.homeId}`) Cerrar
+            a.btn.btn-lg.btn-primary.mt-3.mx-auto.w-20(href=`/admin/item/update/${item.id}`) Actualizar

@@ -14,7 +14,7 @@ const getHome = async () => {
            },
         ],
         })
-        if(dataFound.length === 0){const error = new Error('Dato no hallado'); error.status = 404; throw error;}
+        if(dataFound.length === 0){const error ={message: 'Datos no hallados', status : 404}; throw error;}
         const data = homeCleaner(dataFound, false)
         return data
       
@@ -36,7 +36,7 @@ const getById = async (id) => {
                 }
             ]
         })
-        if(!data){const error = new Error('Dato no hallado'); error.status = 404; throw error;}
+        if(!data){const error = {message: 'Dato no hallado', status : 404}; throw error;}
         const dataFound = homeCleaner(data, true)
         return dataFound
     } catch (error) {
@@ -48,7 +48,7 @@ const getDetail = async (id) => {
         const itemFound = await Item.findByPk(id,{
             where: {enable:true,}
         });
-        if(!itemFound){const error = new Error('Dato no hallado'); error.status = 404; throw error;}
+        if(!itemFound){const error ={message: 'Item no hallado', status : 404}; throw error;}
         const item = aux(itemFound, true)
         return item;
     } catch (error) {
