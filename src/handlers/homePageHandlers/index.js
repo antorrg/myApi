@@ -12,7 +12,7 @@ export default {
     createItemController : eh.catchAsync(createItemController),
     delController : eh.catchAsync(delController),
     updController : eh.catchAsync(updController),
-    detailUpdController: eh.catchAsync(detailUpdController),
+    detailUpdController, //: eh.catchAsync(detailUpdController),
     getPageHand : eh.catchAsync(getPageHand), 
     getPageById : eh.catchAsync(getPageById),
     getItemById : eh.catchAsync(getItemById),

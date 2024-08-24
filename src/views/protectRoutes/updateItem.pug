@@ -17,7 +17,7 @@ block content
           if item.img
             img#preview.img-fluid(src=item.img, alt="Imagen actual")
           else
-            img#preview.img-fluid(src="", alt="Vista previa", style="display: none;")
+            img#preview.img-fluid(src="Not found", alt="Vista previa")
       
       .mb-3
         label.form-label(for="text") Texto:
@@ -29,8 +29,9 @@ block content
           option(value="true" selected=item.enable) True
           option(value="false" selected=!item.enable) False
       
-      input(type="hidden" id="imageURL" name="imageURL" value=item.img)
+      input(type="hidden" id="img" name="img" value=item.img)
       input(type="hidden" id="itemId" name="itemId" value=item.id)
       
       button.btn.btn-primary(type="button" id="submitButton") Actualizar
       a.btn.btn-primary(href=`/admin/item/${item.id}`) Cancelar
+    script( src="/js/adminEdition/itemUpdate.js")

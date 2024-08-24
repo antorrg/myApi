@@ -31,3 +31,30 @@ export default function holderParser (info, isObj) {
         return 'unknown role';
     }
   }
+
+  const scope = (user)=>{
+    switch(user.role){
+      case 0:
+      return "Administrador"
+      case 2 : 
+      return "Moderador"
+      case 9 :
+      return "Super Admin"
+      case 1 :
+      default :
+      return "Usuario"
+    }
+}
+export const revertScope = (user)=>{
+    switch(user.role){
+      case "Administrador":
+      return 0;
+      case "Moderador": 
+      return 2;
+      case "Super Admin":
+      return 9
+      case "Usuario":
+      default :
+      return 1
+    }
+}
