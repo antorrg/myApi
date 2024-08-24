@@ -29,7 +29,7 @@ export const sessionMiddle = session({
     saveUninitialized: false,
     store: myStore,
     cookie: {
-        secure: false,
+        secure: env.secureSession,
         httpOnly: true,
         sameSite: 'strict',
         maxAge: 1000 * 60 * 60 // Tiempo de vida de la cookie en milisegundos

@@ -16,6 +16,7 @@ export default {
     Status,
     ConnectDb,
     optionRender: process.env.NODE_ENV==='development'? false :false,
+    secureSession: process.env.NODE_ENV==='production'? true :false,
     UserImg : USER_IMG,
     SecretKey : SECRET_KEY,
     GmailUser: GMAIL_USER,

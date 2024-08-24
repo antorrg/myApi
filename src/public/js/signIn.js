@@ -6,8 +6,8 @@
     const password = document.querySelector('#floatingPassword').value;
 
     // Aquí puedes agregar tu lógica para manejar el envío del formulario
-    console.log('Email:', email);
-    console.log('Password:', password);
+    //console.log('Email:', email);
+    //console.log('Password:', password);
     try {
       const response = await fetch('/login', {
         method: 'POST',
@@ -21,6 +21,9 @@
      
   
       if (response.status === 200) {
+          // Almacenar el token en localStorage
+          localStorage.setItem('token', result.token);
+          
         document.querySelector('main').innerHTML = `
           <div class="modalContainer">
           <div class="modalSuccess">

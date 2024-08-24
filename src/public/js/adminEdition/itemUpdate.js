@@ -41,12 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // for (const [key, value] of formData.entries()) {
   //   console.log(`${key}:`, value);
   // }
+    const token = localStorage.getItem('token'); 
 
     try {
       const itemId = document.getElementById('itemId').value;
       const response = await fetch(`/api/v3/page/${itemId}`, {
         method: 'PATCH',
         body: formData, // Envía el FormData con el archivo y otros datos
+        headers: {
+          'Authorization': `Bearer ${token}`, // Enviar el token en el encabezado
+        },
       });
   
       if (response.ok) {

@@ -1,6 +1,7 @@
 import sv from '../../controllers/holder/index.js'
 import spage from '../../controllers/homePageServ/index.js'
 import eh from '../../utils/errors/index.js'
+import env from '../../envConfig.js'
 
 export default {
 
@@ -19,16 +20,17 @@ signIn: eh.catchAsyncMVC(async (req, res) => {
 loginController :async(req, res)=>{
   const { email, password } = req.body;
   try{
-  const user = await sv.userLog(email, password)
-  req.session.user = {userId: user.id, email: user.email, role: user.role}
+  const response = await sv.userLog(email, password)
+  req.session.user = {userId: response.user.id, email: response.user.email, role: response.user.role}
+  console.log(req.session.user.userId)
   req.session.isAuthenticated = true; 
-  res.cookie('sessionId', req.session.userId, {
+  res.cookie('sessionId', req.session.user.userId, {
    httpOnly: true, // Solo accesible por el servidor
-   secure: false, // Cambiar a true si usas HTTPS
+   secure: env.secureSession, // Cambiar a true si usas HTTPS
    sameSite: 'Strict', // Evitar CSRF
    maxAge: 1000 * 60 * 60 // 1 hora
   })
-  res.status(200).json(user)
+  res.status(200).json(response)
   }catch(error){
     res.status(error.status||500).json({error:error.message})
   }

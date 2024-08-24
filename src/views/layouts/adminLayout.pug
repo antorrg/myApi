@@ -209,9 +209,9 @@ main.d-flex.flex-nowrap
         li
           hr.dropdown-divider
         li
-          a.dropdown-item(href="/logout") Cerrar Sesion
+          a.dropdown-item(href="/logout" onclick="sessionCleaner()") Cerrar Sesion
   .container.d-flex.flex-nowrap
     .admin-main.flex-grow-1
       block content
-script(src="/js/bootstrap.bundle.min.js")
-script(src="/js/sidebars.js")
+  script(src="/js/bootstrap.bundle.min.js")
+  script(src="/js/sidebars.js")
