@@ -26,7 +26,7 @@ loginController :async(req, res)=>{
   req.session.isAuthenticated = true; 
   res.cookie('sessionId', req.session.user.userId, {
    httpOnly: true, // Solo accesible por el servidor
-   secure: env.secureSession, // Cambiar a true si usas HTTPS
+   secure: false, // Cambiar a true si usas HTTPS
    sameSite: 'Strict', // Evitar CSRF
    maxAge: 1000 * 60 * 60 // 1 hora
   })
