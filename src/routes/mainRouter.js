@@ -11,9 +11,7 @@ mainRouter.use(userRouter)
 
 mainRouter.use('/api/v3/', holderRouter)
 mainRouter.use('/api/v3/', pageRouter)
-//mainRouter.get('/fireConfig', (req, res) => {
-//   res.json(firebaseConfig);
-// });
+
 
 // Manejador de Rutas No Encontradas para MVC
 mainRouter.use((req, res, next) => {

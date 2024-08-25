@@ -1,0 +1,63 @@
+extends ../layouts/adminLayout.pug
+
+block content
+  .container.mt-5
+    h1.mb-4 Actualización de Proyecto
+
+    form#updateForm.needs-validation(novalidate)
+      .row
+        .col-md-6.mb-3
+          label.form-label(for="fileLogo") Logo:
+          .input-group
+            input.form-control(type="file" id="fileLogo" name="logo" accept="image/*")
+            button.btn.btn-outline-secondary(type="button" id="previewButton1") Vista previa
+            button.btn.btn-outline-danger(type="button" id="cancelButton1") Cancelar
+
+        .col-md-6.mb-3
+          if page.info.logo
+            img#preview.img.w-25.h-auto(src=page.info.logo, alt="Imagen actual")
+          else
+            img#preview.img.w-25.h-auto(src="Not found", alt="Vista previa")
+
+        .col-md-6.mb-3
+          label.form-label(for="fileLanding") Landing:
+          .input-group
+            input.form-control(type="file" id="fileLanding" name="landing" accept="image/*")
+            button.btn.btn-outline-secondary(type="button" id="previewButton2") Vista previa
+            button.btn.btn-outline-danger(type="button" id="cancelButton2") Cancelar
+        
+        .col-md-6.mb-3
+          if page.info.landing
+            img#preview.img-fluid(src=page.info.landing, alt="Imagen actual")
+          else
+            img#preview.img-fluid(src="Not found", alt="Vista previa")
+        .mb-3
+          label.form-label(for="title") Titulo:
+          input.form-control(id="title" name="title" rows="3" value= page.info.title required)
+      
+        .mb-3
+          label.form-label(for="info_header") Info_header:
+          textarea.form-control(id="info_header" name="info_header" rows="3" required)= page.info.infoHeader
+
+        .mb-3
+          label.form-label(for="info_body") Info_body:
+          textarea.form-control(id="info_body" name="info_body" rows="3" required)= page.info.infoBody
+
+        .mb-3
+          label.form-label(for="url") Url:
+          input.form-control(id="url" name="url" rows="3" value= page.info.url required)
+      
+        .mb-3
+          label.form-label(for="enable") Enable:
+          select.form-select(id="enable" name="enable" required)
+            option(value="true" selected=page.info.enable) True
+            option(value="false" selected=!page.info.enable) False
+      
+        input(type="hidden" id="logo" name="logo" value=page.info.logo)
+        input(type="hidden" id="landing" name="landing" value=page.info.landing)
+        input(type="hidden" id="id" name="id" value=page.info.id)
+      
+    button.btn.btn-primary(type="button" id="submitButton") Actualizar
+    a.btn.btn-primary(href=`/admin/page/${page.info.id}`) Cancelar
+    script( src="/js/adminEdition/pageUpdate.js")
+

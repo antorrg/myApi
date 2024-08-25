@@ -1,4 +1,4 @@
-import sv from '../../controllers/holder/index.js'
+import sv from '../../controllers/holder/userServices.js'
 import spage from '../../controllers/homePageServ/index.js'
 import eh from '../../utils/errors/index.js'
 
@@ -11,6 +11,13 @@ export default {
          const page = await spage.getById(id)
          //console.log('page content: ',page)
          res.render('./protectRoutes/page', {info, page})
+  }),
+  updFormPage : eh.catchAsyncMVC(async(req, res)=>{
+    const {userId}=req.session.user
+    const {id}=req.params;
+    const info = await sv.getUsersById(userId)
+    const page = await spage.getById(id)
+    res.render('./protectRoutes/updatePage', {info, page})
   }),
   detailItem : eh.catchAsyncMVC(async(req, res)=>{
     const {userId}=req.session.user

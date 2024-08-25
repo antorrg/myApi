@@ -1,7 +1,7 @@
 import express from "express";
-import h from "../handlers/userHandlers/index.js";
+import h from "../handlers/userHandlers/restUserControllers.js";
 import midd from "../middlewares/holderMiddlewares/index.js";
-import ssc from "../handlers/userHandlers/userControllers.js";
+import ssc from "../handlers/userHandlers/mvcUserControllers.js";
 import requireAuth from "../utils/validation/requireAuth.js";
 const holderRouter = express.Router();
 

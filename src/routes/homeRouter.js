@@ -1,5 +1,6 @@
 import express from "express";
-import ctr from "../handlers/homePageHandlers/index.js";
+import ctr from "../handlers/homePageHandlers/mvcGetControllers.js";
+import postContact from '../handlers/homePageHandlers/postContact.js'
 import mid from "../middlewares/homeMiddlewares/index.js";
 
 const homeRouter = express.Router();
@@ -15,6 +16,6 @@ homeRouter.get('/contacto', ctr.getContact)
 
 homeRouter.get('/acerca', ctr.aboutMe)
 
-homeRouter.post('/sendPost', ctr.postContact)
+homeRouter.post('/sendPost', postContact)
 
 export default homeRouter;

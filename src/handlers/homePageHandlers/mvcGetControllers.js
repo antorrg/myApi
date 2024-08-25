@@ -1,30 +1,34 @@
+import eh from '../../utils/errors/index.js'
 import serv from "../../controllers/homePageServ/index.js";
 
-export const getHome = async (req, res) => {
+export default {
+
+getHome : eh.catchAsyncMVC(async (req, res) => {
   console.log('soy sesion: ', req.session.isAuthenticated)
   const info = await serv.getHome();
   res.render("index", { info , isAuthenticated: req.session.isAuthenticated });
-};
+}),
 
-export const getDetailById = async (req, res) => {
+getDetailById : eh.catchAsyncMVC(async (req, res) => {
   const { id } = req.params;
   const response = await serv.getById(id);
   res.render(`detalles`, response);
-};
+}),
+
 //{info, items}
-export const getDetailImage = async (req, res) => {
+getDetailImage : eh.catchAsyncMVC(async (req, res) => {
   const { img, id } = req.query;
   const item = await serv.getDetail(id)
   res.render(`card`, { img, item });
-};
+}),
 
-export const getContact = async (req, res)=>{
+getContact : eh.catchAsyncMVC(async (req, res)=>{
   res.render('contact')
-}
+}),
 
-export const aboutMe = async(req, res)=>{
+aboutMe : eh.catchAsyncMVC(async(req, res)=>{
   res.render('acerca')
-}
+}),
 
-
+};
 
