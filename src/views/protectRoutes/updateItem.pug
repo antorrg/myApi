@@ -1,5 +1,6 @@
 extends ../layouts/adminLayout.pug
 
+
 block content
   .container.mt-5
     h1.mb-4 Actualización de Item
@@ -33,5 +34,6 @@ block content
       input(type="hidden" id="itemId" name="itemId" value=item.id)
       
       button.btn.btn-primary(type="button" id="submitButton") Actualizar
-      a.btn.btn-primary(href=`/admin/item/${item.id}`) Cancelar
+      a.btn.btn-primary(href=`/admin/item/${item.id}`) Volver
+      
     script( src="/js/adminEdition/itemUpdate.js")

@@ -1,7 +1,6 @@
 doctype html
 html(lang="es" data-bs-theme="auto")
   head
-    script(src="/js/adminData.js" type="module")
     script(src="/js/color-modes.js")
 
     meta(charset="utf-8")
@@ -12,6 +11,9 @@ html(lang="es" data-bs-theme="auto")
     title Panel Admin
 
     link(href="/css/bootstrap.min.css" rel="stylesheet")
+    link(href="/css/modalAlert.css", rel="stylesheet")
+    script(src="/js/sweetalert2.all.min.js")
+    //link(href="/css/modals.css", rel="stylesheet")
 
     style.
       .bd-placeholder-img {
@@ -215,3 +217,4 @@ main.d-flex.flex-nowrap
       block content
   script(src="/js/bootstrap.bundle.min.js")
   script(src="/js/sidebars.js")
+  

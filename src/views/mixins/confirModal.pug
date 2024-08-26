@@ -1,0 +1,11 @@
+mixin confirmModal(id, text, text2, confirmText, cancelText)
+  .modal-sm.position-static.p-4.py-md-5(tabindex="-1" role='dialog' id=id)
+    .modal-dialog(role='document')
+      .modal-content.rounded-3.shadow 
+        .modal-body.p-4.text-center.bg-light.text-dark 
+          h5.mb-0= text 
+          p.mb-0= text2 
+        .modal-footer.flex-nowrap.p-0
+          button.btn.btn-lg.btn-link.fs-6.text-decoration-none.col-6.py-3.m-0.rounded-0.border-end 
+            strong=confirmText 
+          button.btn.btn-lg.btn-link.fs-6.text-decoration-none.col-6.py-3.m-0.rounded-0(data-bs-dismiss='modal')= cancelText

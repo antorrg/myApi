@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form id="multiUploadForm" enctype="multipart/form-data">
+    <input type="file" name="image1" id="image1" accept="image/*" required>
+    <input type="file" name="image2" id="image2" accept="image/*" required>
+  
+    <!-- Ejemplo para múltiples items -->
+    <div class="item-group">
+      <input type="text" name="items[0][name]" placeholder="Nombre del item" required>
+      <input type="checkbox" name="items[0][enable]" value="true">
+      <input type="file" name="items[0][image]" accept="image/*" required>
+    </div>
+  
+    <div class="item-group">
+      <input type="text" name="items[1][name]" placeholder="Nombre del item" required>
+      <input type="checkbox" name="items[1][enable]" value="true">
+      <input type="file" name="items[1][image]" accept="image/*" required>
+    </div>
+  
+    <!-- Puedes agregar más grupos para más items -->
+  
+    <button type="submit">Subir</button>
+  </form>
+</body>
+</html>

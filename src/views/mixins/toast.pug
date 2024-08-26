@@ -1,0 +1,8 @@
+mixin toastModal(id, text, text2)
+  .modal-sm.position-static.p-4.py-md-5(tabindex="-1" role='dialog' id=id)
+    .modal-dialog(role='document')
+      .modal-content.rounded-3.shadow 
+        .modal-body.p-4.text-center.bg-light.text-dark 
+          h5.mb-0= text 
+          p.mb-0= text2 
+        .modal-footer.flex-nowrap.p-0

@@ -6,23 +6,24 @@
     align-content: center;
     flex-grow: 1;
     flex-shrink: 1;
-    background-color: rgba(175, 175, 180, 0.5); 
+    background-color: rgba(255, 255, 255, 0.5); 
     max-width: fit-content;
     padding:2rem;
     margin: 2rem;
     font-size: medium;
     /* border: solid grey 1px; */
-    border-radius: 0.5rem;
+    border-radius: 0.1rem;
 }
 .modalSuccess {
-    background-color: #d6eece;
-    color:blue;
+    background-color:  #ffffff;;
+    color:rgb(27, 47, 143);
     max-width: fit-content;
     padding:1rem;
     margin: 2rem;
     font-size: medium;
-    border: solid rgb(36, 133, 36) 2px;
-    border-radius: 0.5rem;
+    border: solid rgb(134, 134, 134) 1px;
+    box-shadow: -10px 1px 6px rgba(0, 0, 0, 0.1), -10px 15px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0.1rem;
     display: flex;
     flex-flow: column wrap;
     justify-content: space-evenly;
@@ -40,14 +41,15 @@
     align-content: center;
     flex-grow: 1;
     flex-shrink: 1;
-    background-color: rgb(255, 255, 255);
+    background-color:  #ffffff;
     color:rgb(99, 16, 20);
     max-width: fit-content;
     padding:2rem;
     margin: 2rem;
     font-size: medium;
-    border: solid rgb(162, 21, 28) 2px;
-    border-radius: 0.5rem;
+    border: solid rgb(134, 134, 134) 1px;
+    box-shadow: -10px 1px 6px rgba(0, 0, 0, 0.1), -10px 15px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0.1rem;
 
 }
 /* Estilos usados en modales de confirmacion */

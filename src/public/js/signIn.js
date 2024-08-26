@@ -23,18 +23,35 @@
       if (response.status === 200) {
           // Almacenar el token en localStorage
           localStorage.setItem('token', result.token);
-          
-        document.querySelector('main').innerHTML = `
-          <div class="modalContainer">
-          <div class="modalSuccess">
-          <h1>¡¡Verificacion exitosa!!</h1>
-          <h2>¡Bienvenido/a!</h2>
-          </div>
-          </div>
-        `;
+          //  document.querySelector('main').innerHTML = `
+          // <div class="modal-sm position-static p-4 py-md-5" tabindex="-1" role="dialog" id="modalChoice">
+          // <div class="modal-dialog" role="document">
+          //   <div class="modal-content rounded-3 shadow">
+          //     <div class="modal-body p-4 text-center">
+          //       <h2 class="mb-0">¡¡Verificacion exitosa!!</h2>
+          //       <h4 class="mb-0">¡Bienvenido/a!</h4>
+          //     </div>
+          //   </div>
+          // </div>
+          // </div>`
+        // document.querySelector('main').innerHTML = `
+        //   <div class="modalContainer">
+        //   <div class="modalSuccess">
+        //   <h1>¡¡Verificacion exitosa!!</h1>
+        //   <h2>¡Bienvenido/a!</h2>
+        //   </div>
+        //   </div>
+        // `;
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Verificacion exitosa. Bienvenido/a!!",
+          showConfirmButton: false,
+          timer: 1500
+        });
         setTimeout(() => {
           window.location.href = '/admin';
-        }, 2000);
+        }, 1100);
       
       } else {
         // Mostrar mensaje de error

@@ -7,6 +7,65 @@ document.addEventListener('DOMContentLoaded', () => {
   const updateForm = document.getElementById('updateForm');
   const submitButton = document.getElementById('submitButton');
 
+  //---------------------------------------------
+
+  submitButton.addEventListener('click', () => {
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: "btn btn-success",
+      cancelButton: "btn btn-danger"
+    },
+    buttonsStyling: false
+  });
+  swalWithBootstrapButtons.fire({
+    title: "Seguro quiere actualizar?",
+    text: "Puede cancelar si lo desea!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Si, actualizar!",
+    cancelButtonText: "Cancelar!",
+    reverseButtons: true
+  }).then((result) => {
+    if (result.isConfirmed) {
+      handleSubmit()
+      swalWithBootstrapButtons.fire({
+        title: "Actualizado!",
+        text: "El item ha sido actualizado.",
+        icon: "success"
+      });
+    } else if (
+      /* Read more about handling dismissals below */
+      result.dismiss === Swal.DismissReason.cancel
+    ) {
+      swalWithBootstrapButtons.fire({
+        title: "Cancelado",
+        text: "La actualizacion se revirtió",
+        icon: "error"
+      });
+    }
+  });
+})
+  //------------------------------
+
+//  // Mostrar el modal cuando se hace clic en "Actualizar"
+//  submitButton.addEventListener('click', () => {
+//   confirmModal.style.display = 'flex'; // Mostrar el modal
+// });
+
+// // Si el usuario hace clic en "Actualizar" en el modal
+// confirmBtn.addEventListener('click', async () => {
+//   confirmModal.style.display = 'none'; // Ocultar el modal
+
+//   // Aquí iría la lógica para enviar el formulario
+//   // Puedes llamar a la función handleSubmit que ya tienes definida
+//   handleSubmit();
+// });
+
+// // Si el usuario hace clic en "Cancelar" en el modal
+// cancelBtn.addEventListener('click', () => {
+//   confirmModal.style.display = 'none'; // Ocultar el modal
+// });
+
   // Mostrar la vista previa de la imagen seleccionada
   previewButton.addEventListener('click', () => {
     if (fileInput.files && fileInput.files[0]) {
@@ -28,8 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Manejo del envío del formulario
-  submitButton.addEventListener('click', async (e) => {
-    e.preventDefault();
+  //submitButton.addEventListener('click', async (e) => {
+    const handleSubmit = async(e)=>{
+   // e.preventDefault();
 
     const formData = new FormData(updateForm); // Captura todos los campos del formulario
     // Agregar archivo si existe uno nuevo
@@ -54,16 +114,18 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   
       if (response.ok) {
-        document.querySelector('#updateForm').innerHTML = `
-          <div class="alert alert-success" role="alert" style="text-align: center; margin: 20px auto; border: 2px solid #28a745; max-width: 400px; padding: 20px;">
-            <h2>Actualización exitosa</h2>
-          </div>
-        `;
+        // document.querySelector('#updateForm').innerHTML = `
+        //   <div class="modalContainer">
+        //   <div class="modalSuccess">
+        //   <h1>¡¡Actualizacion exitosa!!</h1>
+        //   </div>
+        //   </div>
+        // `;
 
         // Recargar la página después de 2 segundos
         setTimeout(() => {
           window.location.reload();
-        }, 2000);
+        }, 1500);
     
       } else {
         document.querySelector('#updateForm').innerHTML = `
@@ -76,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
         setTimeout(() => {
           window.location.reload();
-        }, 2000);
+        }, 1500);
       }
     } catch (error) {
       document.querySelector('#updateForm').innerHTML = `
@@ -91,5 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.reload();
       }, 8000);
     }
-  });
+  }
+ // });
 });
