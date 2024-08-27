@@ -10,34 +10,34 @@ export default {
          const info = await sv.getUsersById(userId)
          const page = await spage.getById(id)
          //console.log('page content: ',page)
-         res.render('./protectRoutes/page', {info, page})
+         res.render('./protectRoutes/pages/page', {info, page})
   }),
   updFormPage : eh.catchAsyncMVC(async(req, res)=>{
     const {userId}=req.session.user
     const {id}=req.params;
     const info = await sv.getUsersById(userId)
     const page = await spage.getById(id)
-    res.render('./protectRoutes/updatePage', {info, page})
+    res.render('./protectRoutes/pages/updatePage', {info, page})
   }),
   detailItem : eh.catchAsyncMVC(async(req, res)=>{
     const {userId}=req.session.user
     const {id}=req.params;
     const info = await sv.getUsersById(userId)
     const item = await spage.getDetail(id)
-    res.render('./protectRoutes/item', {info, item})
+    res.render('./protectRoutes/pages/item', {info, item})
   }),
   updFormItem : eh.catchAsyncMVC(async(req, res)=>{
     const {userId}=req.session.user
     const {id}=req.params;
     const info = await sv.getUsersById(userId)
     const item = await spage.getDetail(id)
-    res.render('./protectRoutes/updateItem', {info, item})
+    res.render('./protectRoutes/pages/updateItem', {info, item})
   }),
   allUsers : eh.catchAsyncMVC(async(req, res)=>{
     const {userId}=req.session.user
     const info = await sv.getUsersById(userId)
     const users = await sv.getAllUsers()
-    res.render('./protectRoutes/users', {info, users})
+    res.render('./protectRoutes/users/users', {info, users})
   })
 
 }

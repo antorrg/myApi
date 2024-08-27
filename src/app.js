@@ -11,14 +11,8 @@ import {sessionMiddle} from './utils/validation/sessionMiddle.js'
 import verifyAuth from './utils/validation/verifyAuth.js'
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-//const __dirname = path.dirname(new URL(import.meta.url).pathname);
-//console.log(__dirname)
+
 const app = express();
-// app.use((req, res, next) => {
-//     res.locals.nonce = crypto.randomBytes(16).toString('hex');
-//     console.log('Generated Nonce:', res.locals.nonce); 
-//     next();
-//   });
 
 app.use(morgan('dev'))
 // app.use(helmet({
@@ -43,13 +37,13 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 app.use(express.static(path.join(__dirname, 'views')))
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.static('public', {
-    setHeaders: (res, path, stat) => {
-      if (path.endsWith('.js')) {
-        res.set('Content-Type', 'application/javascript');
-      }
-    }
-  }));
+// app.use(express.static('public', {
+//     setHeaders: (res, path, stat) => {
+//       if (path.endsWith('.js')) {
+//         res.set('Content-Type', 'application/javascript');
+//       }
+//     }
+//   }));
 app.use(express.static(path.join(__dirname, "views/errors")));
 app.use('/detalles', express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended:true}))

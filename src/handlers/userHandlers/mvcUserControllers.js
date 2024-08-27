@@ -55,7 +55,7 @@ export default {
     const info = await sv.getUsersById(userId);
     const page = await spage.getHome();
     //console.log(info)
-    res.render("./protectRoutes/pages", { info, page });
+    res.render("./protectRoutes/pages/pages", { info, page });
   }),
   //A partir de aqui todos los controllers de rutas protegidas estan en "adminControllers.js"
 };

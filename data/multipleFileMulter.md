@@ -284,3 +284,67 @@ Puedes añadir la opción de eliminar items si el propietario decide quitar un i
 ```
 
 Este enfoque te proporciona un formulario flexible, que puede manejar un número variable de items, haciendo la experiencia del usuario mucho más dinámica y adaptable.
+
+
+# Dos archivos en una ruta: 
+
+Para manejar la subida de dos archivos de imagen en un formulario de actualización usando Multer, puedes utilizar el método `upload.fields()` en lugar de `upload.single()`. Este método te permite especificar múltiples campos de archivo y asignar los archivos subidos a `req.files` con sus respectivos nombres.
+
+### Ejemplo de cómo hacerlo:
+
+1. **Configura Multer para aceptar múltiples archivos:**
+
+```javascript
+import multer from 'multer';
+
+const storage = multer.memoryStorage(); // O configura según necesites
+
+const upload = multer({ storage });
+
+// Middleware para manejar dos archivos: fileLogo y fileLanding
+export const uploadMiddleware = upload.fields([
+  { name: 'fileLogo', maxCount: 1 }, 
+  { name: 'fileLanding', maxCount: 1 }
+]);
+```
+
+2. **Cómo usar el middleware en tu ruta:**
+
+```javascript
+import { uploadMiddleware } from './middlewares/uploadMiddleware';
+
+app.patch('/api/v3/page/:id', uploadMiddleware, (req, res) => {
+  // Aquí puedes acceder a los archivos en req.files
+  const fileLogo = req.files['fileLogo'] ? req.files['fileLogo'][0] : null;
+  const fileLanding = req.files['fileLanding'] ? req.files['fileLanding'][0] : null;
+
+  // Luego puedes proceder a subir los archivos a Firebase u otro servicio
+  if (fileLogo) {
+    // Lógica para subir fileLogo
+  }
+
+  if (fileLanding) {
+    // Lógica para subir fileLanding
+  }
+
+  // Resto de la lógica para actualizar el page
+});
+```
+
+### Explicación:
+
+- **`upload.fields()`**: Este método de Multer acepta un array de objetos, cada uno especificando un campo de archivo con un nombre (`name`) y el número máximo de archivos permitidos para ese campo (`maxCount`).
+
+- **`req.files`**: En lugar de `req.file` (que se usa para un solo archivo), `req.files` es un objeto donde las claves son los nombres de los campos de archivo, y los valores son arrays de archivos subidos. Cada archivo en el array tiene propiedades como `buffer`, `originalname`, `mimetype`, etc.
+
+### Acceso a los archivos:
+
+- **`fileLogo`**: Es el archivo que se sube con el campo `fileLogo`. Se obtiene de `req.files['fileLogo'][0]` porque `req.files['fileLogo']` es un array, y estamos interesados en el primer (y único) archivo.
+  
+- **`fileLanding`**: Similar a `fileLogo`, pero para el campo `fileLanding`.
+
+### Uso en la ruta:
+
+- **Subida de archivos**: Puedes implementar la lógica para subir cada archivo a Firebase o cualquier otro servicio desde aquí, utilizando las propiedades `buffer`, `originalname`, etc.
+
+Esto te permitirá manejar de forma efectiva la subida de múltiples archivos en un solo formulario.

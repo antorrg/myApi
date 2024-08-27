@@ -1,4 +1,4 @@
-extends ../layouts/adminLayout.pug
+extends ../../layouts/adminLayout.pug
 
 block content
   .container.mt-5
@@ -9,28 +9,28 @@ block content
         .col-md-6.mb-3
           label.form-label(for="fileLogo") Logo:
           .input-group
-            input.form-control(type="file" id="fileLogo" name="logo" accept="image/*")
+            input.form-control(type="file" id="fileLogo" name="fileLogo" accept="image/*")
             button.btn.btn-outline-secondary(type="button" id="previewButton1") Vista previa
             button.btn.btn-outline-danger(type="button" id="cancelButton1") Cancelar
 
         .col-md-6.mb-3
           if page.info.logo
-            img#preview.img.w-25.h-auto(src=page.info.logo, alt="Imagen actual")
+            img#logoPreview.img.w-25.h-auto(src=page.info.logo, alt="Imagen actual")
           else
-            img#preview.img.w-25.h-auto(src="Not found", alt="Vista previa")
+            img#logoPreview.img.w-25.h-auto(src="Not found", alt="Vista previa")
 
         .col-md-6.mb-3
           label.form-label(for="fileLanding") Landing:
           .input-group
-            input.form-control(type="file" id="fileLanding" name="landing" accept="image/*")
+            input.form-control(type="file" id="fileLanding" name="fileLanding" accept="image/*")
             button.btn.btn-outline-secondary(type="button" id="previewButton2") Vista previa
             button.btn.btn-outline-danger(type="button" id="cancelButton2") Cancelar
         
         .col-md-6.mb-3
           if page.info.landing
-            img#preview.img-fluid(src=page.info.landing, alt="Imagen actual")
+            img#landingPreview.img-fluid(src=page.info.landing, alt="Imagen actual")
           else
-            img#preview.img-fluid(src="Not found", alt="Vista previa")
+            img#landingPreview.img-fluid(src="Not found", alt="Vista previa")
         .mb-3
           label.form-label(for="title") Titulo:
           input.form-control(id="title" name="title" rows="3" value= page.info.title required)
@@ -58,6 +58,6 @@ block content
         input(type="hidden" id="id" name="id" value=page.info.id)
       
     button.btn.btn-primary(type="button" id="submitButton") Actualizar
-    a.btn.btn-primary(href=`/admin/page/${page.info.id}`) Cancelar
+    a.btn.btn-primary(href=`/admin/page/${page.info.id}`) Volver
     script( src="/js/adminEdition/pageUpdate.js")
 

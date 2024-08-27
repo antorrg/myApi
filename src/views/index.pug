@@ -89,40 +89,27 @@ html(lang="es")
     main
       #myCarousel.carousel.slide(data-bs-ride="carousel")
         .carousel-indicators
-          button(type="button", data-bs-target="#myCarousel", data-bs-slide-to="0", class="active", aria-current="true", aria-label="Slide 1")
-          button(type="button", data-bs-target="#myCarousel", data-bs-slide-to="1", aria-label="Slide 2")
-          button(type="button", data-bs-target="#myCarousel", data-bs-slide-to="2", aria-label="Slide 3")
+          each val, index in info
+            button(type="button", data-bs-target="#myCarousel", data-bs-slide-to=index, class=(index === 0 ? 'active' : ''), aria-current=(index === 0 ? 'true' : ''), aria-label=`Slide ${index + 1}`)
+
         .carousel-inner
-          .carousel-item.active
-            img(src="images/proyectoCarrusel1.png" class="d-block w-100" alt="Rick and Morty 2024")
-            .container
-              .carousel-caption.text-start
-                h1 Rick and Morty.
-                p Este es mi primer sitio web, encontrará más detalles abajo.
-                p
-                  a.btn.btn-lg.btn-primary(href="https://rick-and-morty2024.vercel.app/" target="_blank") Visite el sitio"
-          .carousel-item
-            img(src="images/proyectoCarrusel2.png" class="d-block w-100" alt="Gameworld eccomerce")
-            .container
-              .carousel-caption
-                h1 Gameworld e-commerce.
-                p Un e-commerce realizado por el equipo de estudiantes de Henry.
-                p
-                  a.btn.btn-lg.btn-primary(href="https://gameworldeccomerce.vercel.app" target="_blank") Visite el sitio
-          .carousel-item
-            img(src="images/proyectoCarrusel3.png" class="d-block w-100" alt="Boscarol Hnos")
-            .container
-              .carousel-caption.text-end
-                h1 Boscarol Hnos.
-                p Landing page y  administración de vehículos y clientes para un taller mecánico.
-                p
-                  a.btn.btn-lg.btn-primary(href="https://deployprueba.vercel.app" target="_blank") Visite el sitio
+          each val, index in info
+            .carousel-item(class=(index === 0 ? 'active' : ''))
+              img(src=val.landing, class="d-block w-100", alt=val.title)
+              .container
+                .carousel-caption(class=(index === 0 ? 'text-start' : (index === info.length - 1 ? 'text-end' : '')))
+                  h1= val.title
+                  p= val.infoHeader
+                  p
+                    a.btn.btn-lg.btn-primary(href=val.url, target="_blank") Visite el sitio
+
         button.carousel-control-prev(type="button", data-bs-target="#myCarousel", data-bs-slide="prev")
           span.carousel-control-prev-icon(aria-hidden="true")
           span.visually-hidden Previous
         button.carousel-control-next(type="button", data-bs-target="#myCarousel", data-bs-slide="next")
           span.carousel-control-next-icon(aria-hidden="true")
           span.visually-hidden Next
+
       .container.marketing
         .row
           each inf in info
