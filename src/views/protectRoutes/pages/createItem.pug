@@ -1,1 +1,30 @@
 extends ../../layouts/adminLayout.pug
+
+block content 
+  .container.mt-5 
+    h1.mb-4 Nuevo item 
+
+    form#createForm.needs-validation(novalidate)
+      .row 
+        .col.mb-6.mb-3
+          label.form-label(for="fileInput") Imagen: 
+          .input-group   
+            input.form-control(type="file" id="fileInput" name="image" accept="image/*")
+            button.btn.btn-outline-secondary(type="button" id="previewButton") Vista previa
+            button.btn.btn.-outline-danger(type="button" id="cancelButton") Cancelar 
+        
+        .col-md-6.mb-3
+          if fileInput
+            img#preview.img-fluid(src=fileInput, alt="Imagen")
+          else
+            img#preview.img-fluid(src="Not found", alt="Elija una imagen")
+        
+      .mb-3 
+        label.form-label(for="text") Texto 
+        textarea.form-control(id="text" name="text" rows="3" required)
+
+      input(type="hidden" id="id" name="id" value = pageId)
+
+      button.btn.btn-primary(type="button" id= "submitButton") Crear
+      a.btn.btn-primary(href=`/admin/page/${pageId}`) Volver
+    script( src = "/js/adminEdition/itemCreate.js")

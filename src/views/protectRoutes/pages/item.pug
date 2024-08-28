@@ -10,3 +10,4 @@ block content
             p.text-muted=`${item.text}`
             a.btn.btn-lg.btn-primary.mt-3.mx-auto.w-20(href=`/admin/page/${item.homeId}`) Cerrar
             a.btn.btn-lg.btn-primary.mt-3.mx-auto.w-20(href=`/admin/item/update/${item.id}`) Actualizar
+      button.btn.btn-sm.btn-outline-danger(onclick=`deleteItem(${item.id})`) Eliminar item

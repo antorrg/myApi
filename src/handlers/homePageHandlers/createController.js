@@ -1,4 +1,5 @@
 import serv from "../../controllers/homePageServ/index.js";
+import { uploadImageToFirebase } from "../../utils/uploadService.js";
 
 export const createController = async (req, res) => {
   const { title, landing, logo, info_header, info_body, url, items } = req.body;
@@ -16,7 +17,13 @@ export const createController = async (req, res) => {
 
 
  export const createItemController = async (req, res) => {
-   const {img, text, id} = req.body;
-   const response = await serv.addNewItem(img, text, id)
+   let { img, text, id} = req.body;
+   const file = req.file;
+   let imageUrl = img;
+   if(file){
+      imageUrl = await uploadImageToFirebase(file)
+   }
+   const info = {img: imageUrl, text, id}
+   const response = await serv.addNewItem(info)
    res.status(201).json(response)
  }

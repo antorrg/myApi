@@ -86,16 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
     img.value = ''; // Borra la URL de la imagen anterior si se cancela
   });
 
-  // Manejo del envío del formulario
-  //submitButton.addEventListener('click', async (e) => {
+ 
     const handleSubmit = async(e)=>{
-   // e.preventDefault();
-
     const formData = new FormData(updateForm); // Captura todos los campos del formulario
-    // Agregar archivo si existe uno nuevo
-    // if (fileInput.files && fileInput.files[0]) {
-    //   formData.append('image', fileInput.files[0]);
-    // }
 
      // Consologuear el contenido de FormData
   // for (const [key, value] of formData.entries()) {

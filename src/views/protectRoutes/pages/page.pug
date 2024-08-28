@@ -4,6 +4,7 @@ block content
   //- h2.text-center.w-100.mt-3 Detalles
   section.py-5.text-center.container.mt-0
     .row.py-lg-5
+      
       .col-lg-6.col-md-8.mx-auto
         h3.fw-light Proyecto #{page.info.title}
         strong Logo:
@@ -19,8 +20,9 @@ block content
         p= page.info.url 
         p
           a.btn.btn-primary.my-2(href=`/admin/page/update/${page.info.id}`) Editar
-          a.btn.btn-primary.my-2(href="#") Agregar item
+          a.btn.btn-primary.my-2(href=`/admin/page/itemCreate/${page.info.id}`) Agregar item
           a.btn.btn-secondary.my-2(href="/admin") Volver
+       
   .album.py-5.bg-light
     .container
           - const chunk = (arr, size) => {
@@ -46,3 +48,4 @@ block content
                         .btn-group
                           a.btn.btn-sm.btn-outline-secondary(href=`/admin/item/${item.id}`) Ver mas
                         small.text-muted 9 mins
+  button.btn.btn-sm.btn-outline-danger(onclick=`deletePage(${page.info.id})`) Eliminar proyecto

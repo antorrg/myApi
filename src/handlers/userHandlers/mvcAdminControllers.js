@@ -33,6 +33,13 @@ export default {
     const item = await spage.getDetail(id)
     res.render('./protectRoutes/pages/updateItem', {info, item})
   }),
+  createFormItem : eh.catchAsyncMVC(async(req, res)=>{
+    const {userId}=req.session.user
+    const {id}=req.params;
+    const info = await sv.getUsersById(userId)
+    const pageId = id;
+    res.render('./protectRoutes/pages/createItem', {info, pageId})
+  }),
   allUsers : eh.catchAsyncMVC(async(req, res)=>{
     const {userId}=req.session.user
     const info = await sv.getUsersById(userId)

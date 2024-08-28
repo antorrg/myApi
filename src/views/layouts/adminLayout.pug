@@ -6,7 +6,7 @@ html(lang="es" data-bs-theme="auto")
     meta(charset="utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1")
     meta(name="description" content="")
-    meta(name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors")
+    meta(name="author" content="Antorrg")
     meta(name="generator" content="Hugo 0.122.0")
     title Panel Admin
 
@@ -14,6 +14,7 @@ html(lang="es" data-bs-theme="auto")
     link(href="/css/bootstrap.min.css" rel="stylesheet")
     link(href="/css/modalAlert.css", rel="stylesheet")
     script(src="/js/sweetalert2.all.min.js")
+    script(src = "/js/adminEdition/deleteFunctions.js")
     //link(href="/css/modals.css", rel="stylesheet")
 
     style.
@@ -104,9 +105,25 @@ html(lang="es" data-bs-theme="auto")
        color: #fff;
        background-color: #1a73e8; 
       }
+       @media (max-width: 767.98px) {
+            .navbar-toggler {
+                display: block;
+                }
+            #sidebar {
+            width: 100%;
+             height: 100%;
+               position: fixed;
+             top: 0;
+              left: 0;
+             z-index: 1030;
+             background-color: #343a40; /* Color de fondo */
+            }
+            .admin-main {
+              padding-top: 56px; /* Ajuste para el tamaño del navbar */
+            }
+         }    
 
   link(href="/css/sidebars.css" rel="stylesheet")
-
   body
     svg.d-none(xmlns="http://www.w3.org/2000/svg")
       symbol#check2(viewBox="0 0 16 16")
@@ -165,11 +182,13 @@ html(lang="es" data-bs-theme="auto")
     path(fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z")
 
 main.d-flex.flex-nowrap
-  .d-flex.flex-column.flex-shrink-0.p-3.text-bg-dark(style="width: 280px;")
+  .d-flex.flex-column.flex-shrink-0.p-3.text-bg-dark(style="width: 260px;")
     a.d-flex.align-items-center.mb-3.mb-md-0.me-md-auto.text-white.text-decoration-none(href="/")
       svg.bi.pe-none.me-2(width="40" height="32")
         use(xlink:href="#bootstrap")
       span.fs-4 Administrador
+    button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation")
+      span.navbar-toggler-icon
     hr
     ul.nav.nav-pills.flex-column.mb-auto
       li
