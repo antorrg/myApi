@@ -1,1 +1,89 @@
 extends ../../layouts/adminLayout.pug
+
+block content
+  .container.mt-5
+    h1.mb-4 Creación de Proyecto
+
+    form#createPageForm.needs-validation(novalidate)
+      .row
+        .col-md-6.mb-3
+          label.form-label(for="fileLogo") Logo:
+          .input-group
+            input.form-control(type="file" id="fileLogo" name="fileLogo" accept="image/*" data-preview-target="#logoPreview")
+            button.btn.btn-outline-secondary(type="button" data-action="preview") Vista previa
+            button.btn.btn-outline-danger(type="button" data-action="cancel") Cancelar
+
+        .col-md-6.mb-3
+          if fileLogo
+            img#logoPreview.img.w-25.h-auto(src=fileLogo, alt="Imagen logo")
+          else
+            img#logoPreview.img.w-25.h-auto(src=null, alt="Seleccione una imagen")
+
+        .col-md-6.mb-3
+          label.form-label(for="fileLanding") Landing:
+          .input-group
+            input.form-control(type="file" id="fileLanding" name="fileLanding" accept="image/*" data-preview-target="#landingPreview")
+            button.btn.btn-outline-secondary(type="button" data-action="preview") Vista previa
+            button.btn.btn-outline-danger(type="button" data-action="cancel") Cancelar
+        
+        .col-md-6.mb-3
+          if fileLanding
+            img#landingPreview.img-fluid(src='fileLanding', alt="Imagen actual")
+          else
+            img#landingPreview.img-fluid(src=null, alt="Vista previa")
+        .mb-3
+          label.form-label(for="title") Titulo:
+          input.form-control(id="title" name="title" rows="3" value="" required )
+      
+        .mb-3
+          label.form-label(for="info_header") Info_header:
+          textarea.form-control(id="info_header" name="info_header" rows="3" required)
+
+        .mb-3
+          label.form-label(for="info_body") Info_body:
+          textarea.form-control(id="info_body" name="info_body" rows="3" required)
+
+        .mb-3
+          label.form-label(for="url") Url:
+          input.form-control(id="url" name="url" rows="3" value="" required)
+      
+        .mb-3
+          label.form-label(for="enable") Enable:
+          select.form-select(id="enable" name="enable" required)
+            option(value="true") True
+            option(value="false" ) False
+      .spinner-container(style="display:none; text-align: center; margin-top: 20px;")
+      .items-container
+        h2 Items: 
+        .itemCreate
+          .row 
+            .col.mb-6.mb-3
+              label.form-label(for="fileInput") Imagen: 
+              .input-group   
+                input.form-control(type="file" id="fileInput" name="items[0][image]" accept="image/*" data-preview-target="#preview")
+                button.btn.btn-outline-secondary(type="button" data-action="preview") Vista previa
+                button.btn.btn-outline-danger(type="button" data-action="cancel") Cancelar 
+        
+            .col-md-6.mb-3
+              if fileInput
+                img#preview.img-fluid(src="items[0][image]", alt="Imagen")
+              else
+                img#preview.img-fluid(src=null, alt="Elija una imagen")
+        
+            .mb-3 
+            label.form-label(for="text") Texto  
+            textarea.form-control(id="text" name="items[0][text]" rows="3" required)
+
+        .button-group
+          .d-flex.justify-content-between.mb-3 
+          button.btn.btn-primary.me-2.mb-3(type="button" id="addItemButton") Agregar item
+          button.btn.btn-danger.me-2.mb-3(type="button" id="removeItemButton") Eliminar item
+
+        .d-flex.justify-content-between.mb-3
+        button.btn.btn-primary.me-2.mb-3(type="button" id= "submitButton") Crear
+        a.btn.btn-primary.me-2.mb-3(href=`/admin`) Volver
+      script(src='/js/adminEdition/pageCreate.js')
+
+
+   
+

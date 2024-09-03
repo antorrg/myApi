@@ -25,7 +25,7 @@ export default {
         email: response.user.email,
         role: response.user.role,
       };
-      console.log(req.session.user.userId);
+      //console.log(req.session.user.userId);
       req.session.isAuthenticated = true;
       res.cookie("sessionId", req.session.user.userId, {
         httpOnly: true, // Solo accesible por el servidor

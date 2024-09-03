@@ -197,7 +197,7 @@ main.d-flex.flex-nowrap
             use(xlink:href="#grid")
           | Productos
       li.nav-item
-        a.nav-link.text-white(href="/admin/users" aria-current="page")
+        a.nav-link.text-white(href="/admin/users" )
           svg.bi.pe-none.me-2(width="16" height="16")
             use(xlink:href="#home")
           | Usuarios
@@ -212,10 +212,10 @@ main.d-flex.flex-nowrap
             use(xlink:href="#speedometer2")
           | Configuraciones
       li
-        a.nav-link.text-white(href="#")
+        a.nav-link.text-white(href="/admin/project")
           svg.bi.pe-none.me-2(width="16" height="16")
             use(xlink:href="#people-circle")
-          | Customers
+          | Nuevo proyecto
     hr
     .dropdown
       a.d-flex.align-items-center.text-white.text-decoration-none.dropdown-toggle(href="#" data-bs-toggle="dropdown" aria-expanded="false")
@@ -223,9 +223,9 @@ main.d-flex.flex-nowrap
         strong= info.nickname
       ul.dropdown-menu.dropdown-menu-dark.text-small.shadow
         li
-          a.dropdown-item(href="#") Nuevo proyecto...
+          a.dropdown-item(href="/admin/project/") Nuevo proyecto...
         li
-          a.dropdown-item(href="#") Settings
+          a.dropdown-item(href="/admin/page/1") Settings
         li
           a.dropdown-item(href="#") Perfil
         li

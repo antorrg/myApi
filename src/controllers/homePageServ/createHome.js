@@ -1,6 +1,7 @@
 import {Home, Item, sequelize} from '../../db.js'
 
-export const createHome = async (title1, landing1, logo1, info_header1, info_body1, url1, items1 ) => {
+export const createHome = async (info) => {
+    const {title1, landing1, logo1, info_header1, info_body1, url1, items1}=info
     let transaction;
     try {
         transaction = await sequelize.transaction();

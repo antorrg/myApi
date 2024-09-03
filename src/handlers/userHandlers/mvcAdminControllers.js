@@ -40,6 +40,11 @@ export default {
     const pageId = id;
     res.render('./protectRoutes/pages/createItem', {info, pageId})
   }),
+  createFormPage : eh.catchAsyncMVC(async(req, res)=>{
+    const {userId}=req.session.user
+    const info = await sv.getUsersById(userId)
+    res.render('./protectRoutes/pages/createPage', {info})
+  }),
   allUsers : eh.catchAsyncMVC(async(req, res)=>{
     const {userId}=req.session.user
     const info = await sv.getUsersById(userId)

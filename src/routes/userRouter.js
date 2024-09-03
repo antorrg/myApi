@@ -20,6 +20,7 @@ userRouter.get('/admin/item/:id', requireAuth, actr.detailItem)
 userRouter.get('/admin/page/update/:id', requireAuth, actr.updFormPage)
 userRouter.get('/admin/item/update/:id', requireAuth,actr.updFormItem )
 userRouter.get('/admin/page/itemCreate/:id', requireAuth, actr.createFormItem)
+userRouter.get('/admin/project', requireAuth, actr.createFormPage)
 userRouter.get('/admin/users', requireAuth, actr.allUsers)
 
 

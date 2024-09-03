@@ -4,7 +4,6 @@ import path from 'path'
 import morgan from 'morgan'
 import helmet from 'helmet'
 import cors from 'cors'
-import crypto from 'crypto'
 import mainRouter from './routes/mainRouter.js'
 import midd from './utils/errors/index.js'
 import {sessionMiddle} from './utils/validation/sessionMiddle.js'
@@ -32,18 +31,11 @@ const corsOptions = {
     credentials: true, // Permitir el envío de credenciales (cookies, headers de autorización, etc.)
 };
 app.use(sessionMiddle)
-app.use(cors(corsOptions))
+//app.use(cors(corsOptions))
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 app.use(express.static(path.join(__dirname, 'views')))
 app.use(express.static(path.join(__dirname, "public")));
-// app.use(express.static('public', {
-//     setHeaders: (res, path, stat) => {
-//       if (path.endsWith('.js')) {
-//         res.set('Content-Type', 'application/javascript');
-//       }
-//     }
-//   }));
 app.use(express.static(path.join(__dirname, "views/errors")));
 app.use('/detalles', express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended:true}))

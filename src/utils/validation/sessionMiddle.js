@@ -36,10 +36,14 @@ export const sessionMiddle = session({
     }
 });
 
+
 // Manejo de errores
 myStore.on('error', (error) => {
     console.error(error);
 });
+
+// Esta parte corresponde a jsonwebtoken: 
+
 
 // import session from 'express-session';
 // import  connectMongo from 'connect-mongodb-session'
