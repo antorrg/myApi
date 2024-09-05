@@ -1,11 +1,12 @@
 import express from 'express'
 import ctr from "../handlers/homePageHandlers/index.js";
+import { uploadImg } from '../handlers/homePageHandlers/uploadImg.js';
 import mid from "../middlewares/homeMiddlewares/index.js";
 import * as upl from '../middlewares/homeMiddlewares/multer.js'
 import jwt from '../utils/validation/jwt.js'
-import verCreate from '../middlewares/holderMiddlewares/verCreate.js';
 const pageRouter = express.Router()
 
+pageRouter.post('/upload',   jwt.verifyToken, upl.uploadMiddleware, uploadImg)
 pageRouter.post("/page/createProject",   jwt.verifyToken, upl.uploadUpdPage, ctr.createController);
 pageRouter.post("/page/item/create",  jwt.verifyToken, upl.uploadMiddleware, ctr.createItemController)
 pageRouter.get("/page",  ctr.getPageHand);

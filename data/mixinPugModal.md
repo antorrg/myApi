@@ -136,3 +136,4 @@ document.getElementById('updateBtn').addEventListener('click', function() {
 3. **JavaScript para Manejar el Modal**: El script muestra el modal al hacer clic en el botón de actualización. Si el usuario confirma la acción, se envía el formulario. Puedes adaptar esta lógica según tus necesidades.
 
 Este patrón te permite integrar de manera elegante un modal de confirmación en un flujo de actualización, asegurando que los usuarios confirmen acciones críticas antes de que se realicen cambios en los datos.
+
