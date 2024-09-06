@@ -1,6 +1,7 @@
 import {Home, Item} from '../../db.js'
 
 export const updHome = async (id, newData) => {
+   
     try {
         const homeFound = await Home.findByPk(id);
         if(!homeFound){const error = new Error('Unexpected error, page not found'); error.status = 500; throw error}

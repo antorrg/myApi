@@ -13,16 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const text1 = document.getElementById('text1');
   const text2 = document.getElementById('text2');
   const submitButton = document.getElementById('submitButton')
-  // const itemsContainer = document.querySelector('.items-container');
-  // const createPageForm = document.getElementById('createPageForm')
 
-
-
-// submitButton.addEventListener('click',()=>{
-//   console.log('soy title: ',inputTitle)
-//   console.log('soy logo: ',logoUrl)
-//   handleSubmit()
-// })
 
 //sweetalert:------------------------------------------
 submitButton.addEventListener('click', (e) => {
@@ -159,7 +150,7 @@ const pageData = {
           ]
               }
 
-              console.log(JSON.stringify(pageData))
+              console.log(pageData)
     const token = localStorage.getItem('token'); 
 
     try {

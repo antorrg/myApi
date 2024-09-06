@@ -13,7 +13,7 @@ pageRouter.get("/page",  ctr.getPageHand);
 pageRouter.get("/page/:id",  ctr.getPageById);
 pageRouter.get("/page/item/:id",  ctr.getItemById)
 pageRouter.delete("/page/item/:id", )
-pageRouter.put("/page/:id", jwt.verifyToken, upl.uploadUpdPage,ctr.updController);
+pageRouter.put("/page/:id", jwt.verifyToken,  ctr.updController);
 pageRouter.patch("/page/:id", jwt.verifyToken, upl.uploadMiddleware, ctr.detailUpdController);
 pageRouter.delete("/page/:id", ctr.delController);
 

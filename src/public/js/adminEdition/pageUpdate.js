@@ -11,43 +11,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateForm = document.getElementById('updateForm');
     const submitButton = document.getElementById('submitButton');
   
-    // Mostrar la vista previa de la imagen seleccionada
-    previewButton1.addEventListener('click', () => {
-      if (fileLogo.files && fileLogo.files[0]) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          logoPreview.src = e.target.result;
-          logoPreview.style.display = 'block';
-        };
-        reader.readAsDataURL(fileLogo.files[0]);
-      }
-    });
-    previewButton2.addEventListener('click', () => {
-        if (fileLanding.files && fileLanding.files[0]) {
-          const reader = new FileReader();
-          reader.onload = (e) => {
-            landingPreview.src = e.target.result;
-            landingPreview.style.display = 'block';
-          };
-          reader.readAsDataURL(fileLanding.files[0]);
-        }
-      });
+   
   
-    // Cancelar la selección de la imagen y ocultar la vista previa
-    cancelButton1.addEventListener('click', () => {
-      fileLogo.value = '';
-      preview.src = '';
-      preview.style.display = 'none';
-      logo.value = ''; // Borra la URL de la imagen anterior si se cancela
-    });
-    cancelButton2.addEventListener('click', () => {
-        fileLanding.value = '';
-        preview.src = '';
-        preview.style.display = 'none';
-        landing.value = ''; // Borra la URL de la imagen anterior si se cancela
-      });
   // Funcion de sweetalert2
-      submitButton.addEventListener('click', () => {
+      submitButton.addEventListener('click', (e) => {
+        e.preventDefault();
+          // Recoger todos los campos que deben ser validados
+  const title = document.getElementById('title').value.trim();
+  const info_header = document.getElementById('info_header').value.trim();
+  const info_body = document.getElementById('info_body').value.trim();
+  const url = document.getElementById('url').value.trim();
+  const enable = document.getElementById('enable').value;
+  
+  // Validar que no estén vacíos
+  if (!title || !info_header || !info_body || !url || !enable) {
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "Por favor rellene todos los campos",
+      showConfirmButton: false,
+      timer: 1500
+    });
+    return;
+       }
         const swalWithBootstrapButtons = Swal.mixin({
           customClass: {
             confirmButton: "btn btn-success",
@@ -84,23 +70,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       })
     // Manejo del envío del formulario
-    // submitButton.addEventListener('click', async (e) => {
     //   e.preventDefault();
     const handleSubmit = async()=>{
-      const formData = new FormData(updateForm); // Captura todos los campos del formulario
-       // Consologuear el contenido de FormData
-    // for (const [key, value] of formData.entries()) {
-    //   console.log(`${key}:`, value);
-    // }
+     
+    const pageData = {
+                       title: document.getElementById('title').value,
+                       logo: document.getElementById('logoUrl').value,
+                       landing: document.getElementById('landingUrl').value,
+                       info_header: document.getElementById('info_header').value,
+                       info_body: document.getElementById('info_body').value,
+                       url : document.getElementById('url').value,
+                       enable: document.getElementById('enable').value,
+                     }
+    
+                  
       const token = localStorage.getItem('token'); 
   
       try {
         const id = document.getElementById('id').value;
         console.log('soy el id: ', id)
+        console.log(pageData)
         const response = await fetch(`/api/v3/page/${id}`, {
           method: 'PUT',
-          body: formData, // Envía el FormData con el archivo y otros datos
+          body: pageData, 
           headers: {
+            'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`, // Enviar el token en el encabezado
           },
         });
