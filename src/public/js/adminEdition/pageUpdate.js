@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(pageData)
         const response = await fetch(`/api/v3/page/${id}`, {
           method: 'PUT',
-          body: pageData, 
+          body: JSON.stringify(pageData), 
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`, // Enviar el token en el encabezado

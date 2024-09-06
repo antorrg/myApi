@@ -1,4 +1,7 @@
 import express from 'express'
+import { uploadImg } from '../handlers/homePageHandlers/uploadImg.js';
+import * as upl from '../middlewares/homeMiddlewares/multer.js'
+import jwt from '../utils/validation/jwt.js'
 import homeRouter from './homeRouter.js'
 import holderRouter from './holderRouter.js'
 import pageRouter from './pageRouter.js'
@@ -11,7 +14,8 @@ mainRouter.use(userRouter)
 
 mainRouter.use('/api/v3/', holderRouter)
 mainRouter.use('/api/v3/', pageRouter)
-
+//Ruta de subida de imagenes:
+//mainRouter.post('/api/v3/upload',   jwt.verifyToken, upl.uploadMiddleware, uploadImg)
 
 // Manejador de Rutas No Encontradas para MVC
 // mainRouter.use((req, res, next) => {
