@@ -5,13 +5,15 @@ mixin imageUpload(fieldName, label, previewId, responseInputId, imageUrl)
         label.form-label(for=fieldName) #{label}:
         .input-group
           input.form-control(type="file" id=fieldName name=fieldName accept="image/*" onchange=`handleFileSelect('${fieldName}', '${previewId}')`)
-          button.btn.btn-outline-secondary(type="button" onclick=`uploadImage('${fieldName}', '${previewId}', '${responseInputId}')`) Subir
-          button.btn.btn-outline-danger(type="button" onclick=`cancelImage('${previewId}', '${fieldName}')`) Cancelar
+          button.btn.btn-outline-secondary(type="button"  id=`uploadButton_${fieldName}` onclick=`uploadImage('${fieldName}', '${previewId}', '${responseInputId}')` disabled) Subir
+          button.btn.btn-outline-danger.mr-3(type="button" onclick=`cancelImage('${previewId}', '${fieldName}')`) Cancelar
       
       input(type="hidden" id=responseInputId name=responseInputId value=imageUrl)
     
-    .col-md-4.d-flex.align-items-center.justify-content-center
+    .col-md-4.d-flex-column.align-items-end.justify-content-center
       img.img-fluid(id=previewId src=imageUrl alt="Vista previa" style="max-height: 200px; width: auto;")
+      span(id=`${fieldName}UploadSuccess` class="text-success" style="display: none; margin-left: 1rem;") Imagen subida exitosamente!
+
 
   script.
     function handleFileSelect(fieldName, previewId) {
@@ -20,6 +22,7 @@ mixin imageUpload(fieldName, label, previewId, responseInputId, imageUrl)
       const file = input.files[0];
 
       if (file) {
+        document.getElementById(`uploadButton_${fieldName}`).disabled = false;
         const reader = new FileReader();
 
         reader.onload = (e) => {
@@ -39,6 +42,13 @@ mixin imageUpload(fieldName, label, previewId, responseInputId, imageUrl)
 
     async function uploadImage(fieldName, previewId, responseInputId) {
       const fileInput = document.getElementById(fieldName);
+      const file = fileInput.files[0]; // Obtener el archivo seleccionado
+
+        // Validar si hay un archivo antes de continuar
+        if (!file) {
+          alert('Por favor, selecciona un archivo antes de subir.');
+           return;
+              }
       const formData = new FormData();
       formData.append('image', fileInput.files[0]);
 
@@ -57,6 +67,7 @@ mixin imageUpload(fieldName, label, previewId, responseInputId, imageUrl)
         if (result.success) {
           document.getElementById(responseInputId).value = result.data.url;
           document.getElementById(previewId).src = result.data.url;
+          document.getElementById(`${fieldName}UploadSuccess`).style.display = 'block';
           const modalHtml1 = `
             <div class="modalContainer" id="temporaryModal">
             <div class="modalSuccess">
@@ -76,6 +87,7 @@ mixin imageUpload(fieldName, label, previewId, responseInputId, imageUrl)
           
         
         } else {
+            document.getElementById(`${fieldName}UploadSuccess`).style.display = 'none';
             const modalHtml2 = `
               <div class="modalContainer" id="temporaryModal2">
               <div class="modalFailed">
@@ -97,145 +109,3 @@ mixin imageUpload(fieldName, label, previewId, responseInputId, imageUrl)
         console.error('Error en la subida:', error.message)
       }
       }
-
-//- mixin imageUpload(fieldName, label, previewId, responseInputId, imageUrl)
-//-   .col-md-6.mb-3
-//-     label.form-label(for=fieldName) #{label}:
-//-     .input-group
-//-       input.form-control(type="file" id=fieldName name=fieldName accept="image/*" onchange="handleFileSelect(this)")
-//-       button.btn.btn-outline-secondary(type="button" onclick=`uploadImage('${fieldName}', '${previewId}', '${responseInputId}')`) Subir
-//-       button.btn.btn-outline-danger(type="button" onclick=`cancelImage('${previewId}', '${fieldName}')`) Cancelar
-  
-//-   .col-md-6.mb-3
-//-     img.img.w-25.h-auto(id=previewId,  alt="Vista previa")
-  
-//-   input(type="hidden" id=responseInputId name=responseInputId)
-
-//-   script.
-//-     async function handleFileSelect(input) {
-//-       const previewImage = document.getElementById(input.id.replace('Input', 'Preview'));
-//-       const file = input.files[0];
-//-       //let showImg =  null;
-//-       const reader = new FileReader();
-
-//-       reader.onload = () => {
-//-         previewImage.src = reader.result;
-      
-//-       };
-
-//-       if (file) {
-//-        await reader.readAsDataURL(file);
-       
-//-       }
-//-     }
-
-//-     function cancelImage(previewId, fieldName) {
-//-       const previewImage = document.getElementById(previewId);
-//-       const fileInput = document.getElementById(fieldName);
-//-       fileInput.value = '';
-//-       previewImage.src = '';
-//-       //showImg = ''
-//-     }
-
-//-     async function uploadImage(fieldName, previewId, responseInputId) {
-//-       const fileInput = document.getElementById(fieldName);
-//-       const formData = new FormData();
-//-       formData.append('image', fileInput.files[0]);
-
-//-       const token = localStorage.getItem('token'); 
-
-//-       try {
-//-         const response = await fetch('/api/v3/upload', {
-//-           method: 'POST',
-//-           body: formData,
-//-           headers: {
-//-             'Authorization': `Bearer ${token}`, 
-//-           },
-//-         });
-
-//-         const result = await response.json();
-      
-//-         if (result.ok) {
-//-           document.getElementById(responseInputId).value = result.url;
-//-           showImg= result.url
-//-           alert('Imagen subida exitosamente.');
-//-         } else {
-//-           alert('Error al subir la imagen.');
-//-         }
-//-       } catch (error) {
-//-         console.error('Error en la subida:', error.message)
-//-       }
-//-    }
-
-//- mixin imageUpload(fieldName, label, previewId, responseInputId, imageUrl)
-//-   .col-md-6.mb-3
-//-     label.form-label(for=fieldName) #{label}:
-//-     .input-group
-//-       input.form-control(type="file" id=fieldName name=fieldName accept="image/*" onchange="handleFileSelect(this)")
-//-       button.btn.btn-outline-secondary(type="button" onclick=`uploadImage('${fieldName}', '${previewId}', '${responseInputId}')`) Subir
-//-       button.btn.btn-outline-danger(type="button" onclick=`cancelImage('${previewId}')`) Cancelar
-  
-//-   .col-md-6.mb-3
-//-     img.img.w-25.h-auto(id=previewId, src= imageUrl? imageUrl : fieldName, alt="Vista previa")
-  
-//-   input(type="hidden" id=responseInputId name=responseInputId)
-
-//-   script.
-//-     async function handleFileSelect(input) {
-//-       const previewImage = document.getElementById(input.id.replace('Input', 'Preview'));
-//-       console.log('previewImage: ', previewImage)
-//-       const file = input.files[0];
-//-       const reader = new FileReader();
-
-//-       reader.onload = () => {
-//-         previewImage.src = reader.result;
-//-       };
-
-//-       if (file) {
-//-         await reader.readAsDataURL(file);
-  
-//-       }
-//-     }
-
-//-     function cancelImage(previewId) {
-//-       const previewImage = document.getElementById(previewId);
-//-       const fileInput = document.getElementById(previewId.replace('Preview', ''));
-//-       fileInput.value = '';
-//-       previewImage.src = 'Not found';
-//-     }
-
-//-     async function uploadImage(fieldName, previewId, responseInputId) {
-//-       const fileInput = document.getElementById(fieldName);
-//-       const formData = new FormData();
-//-       const imgName = 'image'
-//-       formData.append(imgName, fileInput.files[0]);
-//-          // Consologuear el contenido de FormData
-//-         for (const [key, value] of formData.entries()) {
-//-           console.log(`${key}:`, value);
-//-           }
-
-//-       const token = localStorage.getItem('token'); 
-
-//-       try {
-//-         const response = await fetch('/api/v3/upload', {
-//-           method: 'POST',
-//-           body: formData,
-//-           headers: {
-//-            'Authorization': `Bearer ${token}`, 
-//-           },
-//-         });
-
-//-         const result = await response.json();
-       
-      
-//-         if (result.ok) {
-//-           document.getElementById(responseInputId).value = result;
-//-           alert('Imagen subida exitosamente.');
-//-         } else {
-         
-//-           alert('Error al subir la imagen.');
-//-         }
-//-       } catch (error) {
-//-         console.error('Error en la subida:', error.message)
-//-       }
-//-    }

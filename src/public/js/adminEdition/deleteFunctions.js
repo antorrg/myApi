@@ -17,8 +17,7 @@ const deletePage = async(id)=>{
         reverseButtons: true
       }).then((result) => {
         if (result.isConfirmed) {
-            console.log('Proyecto borrado: ', id)
-          //handleDeletePage(id)
+          handleDeletePage(id)
           swalWithBootstrapButtons.fire({
             title: "Hecho!",
             text: "El Proyecto ha sido eliminado.",
@@ -116,8 +115,8 @@ const handleDeletePage = async(id)=>{
     const token = localStorage.getItem('token'); 
     try {
       //const pageId = document.getElementById('id').value;
-      const response = await fetch(`/api/v3/page/item/${id}`, {
-        method: 'POST',
+      const response = await fetch(`/api/v3/page/${id}`, {
+        method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`, // Enviar el token en el encabezado
         },

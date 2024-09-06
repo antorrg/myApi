@@ -9,11 +9,11 @@ block content
       .row
         .col-md-6.mb-3
           +imageUpload('fileLogo', 'Logo', 'logoPreview', 'logoUrl', '' )
-          +imageUpload('fileLanding', 'Landing', 'landingPreview', 'landingUrl', '' )
+          +imageUpload('fileLanding', 'Landing', 'landingPreview', 'landingUrl', '')
         
         .mb-3
           label.form-label(for="title") Titulo:
-          input.form-control(id="title" name="title" rows="3" value="" required )
+          input.form-control(id="title" name="title" value="" required )
       
         .mb-3
           label.form-label(for="info_header") Info_header:
@@ -25,7 +25,7 @@ block content
 
         .mb-3
           label.form-label(for="url") Url:
-          input.form-control(id="url" name="url" rows="3" value="" required)
+          input.form-control(id="url" name="url" value="" required)
       
         .mb-3
           label.form-label(for="enable") Enable:
@@ -38,16 +38,25 @@ block content
         .itemCreate
           .row 
             .col.mb-6.mb-3
+              +imageUpload('fileItem0', 'Imagen', 'item0Preview', 'item0Url', '' )
+        
+            .mb-3 
+            label.form-label(for="text0") Texto  
+            textarea.form-control(id="text0" name="items[0][text]" rows="3" required)
+
+            .col.mb-6.mb-3
               +imageUpload('fileItem1', 'Imagen', 'item1Preview', 'item1Url', '' )
         
             .mb-3 
-            label.form-label(for="text") Texto  
-            textarea.form-control(id="text" name="items[0][text]" rows="3" required)
+            label.form-label(for="text1") Texto  
+            textarea.form-control(id="text1" name="items[1][text]" rows="3" required)
 
-        .button-group
-          .d-flex.justify-content-between.mb-3 
-          button.btn.btn-primary.me-2.mb-3(type="button" id="addItemButton") Agregar item
-          button.btn.btn-danger.me-2.mb-3(type="button" id="removeItemButton") Eliminar item
+            .col.mb-6.mb-3
+              +imageUpload('fileItem2', 'Imagen', 'item2Preview', 'item2Url', '' )
+        
+            .mb-3 
+            label.form-label(for="text2") Texto  
+            textarea.form-control(id="text2" name="items[2][text]" rows="3" required)
 
         .d-flex.justify-content-between.mb-3
         button.btn.btn-primary.me-2.mb-3(type="button" id= "submitButton") Crear

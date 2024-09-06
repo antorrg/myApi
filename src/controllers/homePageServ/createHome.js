@@ -1,27 +1,28 @@
 import {Home, Item, sequelize} from '../../db.js'
 
 export const createHome = async (info) => {
-    const {title1, landing1, logo1, info_header1, info_body1, url1, items1}=info
+    console.log(info)
+    //const {title, landing, logo, info_header, info_body, url, items}=info
     let transaction;
     try {
         transaction = await sequelize.transaction();
         const product = await Home.findOne({
-            where:{title : title1
+            where:{title : info.title
 
             }, transaction
 
         });
         if(product){const error = new Error('This title already exists'); error.status = 400; throw error};
         const newProduct = await Home.create({
-            title:title1,
-            landing: landing1,
-            logo:logo1,
-            info_header:info_header1,
-            info_body:info_body1,
-            url:url1,
+            title:info.title,
+            landing: info.landing,
+            logo:info.logo,
+            info_header:info.info_header,
+            info_body:info.info_body,
+            url:info.url,
         },{transaction});  
         const createdItems = await Promise.all(
-            items1.map(async(item)=> {
+            info.items.map(async(item)=> {
                 const newItem = await Item.create({
                     img : item.img,
                     text: item.text,

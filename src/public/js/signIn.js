@@ -43,15 +43,15 @@
         //   </div>
         // `;
         Swal.fire({
-          position: "top-end",
+          position: "center",
           icon: "success",
           title: "Verificacion exitosa. Bienvenido/a!!",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1800,
         });
         setTimeout(() => {
           window.location.href = '/admin';
-        }, 1100);
+        }, 2000);
       
       } else {
         // Mostrar mensaje de error

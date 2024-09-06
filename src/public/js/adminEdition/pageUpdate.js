@@ -106,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     
         if (response.ok) {
-  
           // Recargar la página después de 2 segundos
           setTimeout(() => {
             window.location.reload();

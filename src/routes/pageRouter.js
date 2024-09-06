@@ -7,7 +7,7 @@ import jwt from '../utils/validation/jwt.js'
 const pageRouter = express.Router()
 
 pageRouter.post('/upload',   jwt.verifyToken, upl.uploadMiddleware, uploadImg)
-pageRouter.post("/page/createProject",   jwt.verifyToken, upl.uploadUpdPage, ctr.createController);
+pageRouter.post("/page/createProject",   jwt.verifyToken, ctr.createController);
 pageRouter.post("/page/item/create",  jwt.verifyToken, upl.uploadMiddleware, ctr.createItemController)
 pageRouter.get("/page",  ctr.getPageHand);
 pageRouter.get("/page/:id",  ctr.getPageById);
