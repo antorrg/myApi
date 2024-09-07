@@ -15,7 +15,7 @@ mainRouter.use(userRouter)
 mainRouter.use('/api/v3/', holderRouter)
 mainRouter.use('/api/v3/', pageRouter)
 //Ruta de subida de imagenes:
-//mainRouter.post('/api/v3/upload',   jwt.verifyToken, upl.uploadMiddleware, uploadImg)
+mainRouter.post('/api/v3/upload',    upl.uploadMiddleware, uploadImg)
 
 // Manejador de Rutas No Encontradas para MVC
 // mainRouter.use((req, res, next) => {
