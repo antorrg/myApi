@@ -122,6 +122,25 @@ html(lang="es" data-bs-theme="auto")
               padding-top: 56px; /* Ajuste para el tamaño del navbar */
             }
          } 
+      .spinner { /*spinner personalizado*/
+        margin: 30px auto;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 0.25rem solid #ccc; 
+        animation: spin 1s linear infinite;
+        border-bottom-color: #614ad3;
+      }
+  
+      @keyframes spin {
+        from {
+        transform: rotate(0);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+  
   link(href="/css/sidebars.css" rel="stylesheet")
   body
     svg.d-none(xmlns="http://www.w3.org/2000/svg")

@@ -1,8 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
   const fileInput = document.getElementById('fileInput');
-  const previewButton = document.getElementById('previewButton');
-  const cancelButton = document.getElementById('cancelButton');
-  const preview = document.getElementById('preview');
   const img = document.getElementById('imageURL');
   const updateForm = document.getElementById('updateForm');
   const submitButton = document.getElementById('submitButton');
@@ -10,6 +7,22 @@ document.addEventListener('DOMContentLoaded', () => {
   //---------------------------------------------
 
   submitButton.addEventListener('click', () => {
+    // Recoger todos los campos que deben ser validados
+  const img = document.getElementById('itemUrl').value.trim(); 
+  const text = document.getElementById('text').value.trim()
+  const enable = document.getElementById('enable').value;
+  
+  // Validar que no estén vacíos
+  if (!img|| !text || !enable) {
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "Por favor rellene todos los campos",
+      showConfirmButton: false,
+      timer: 1500
+    });
+    return;
+  }
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
       confirmButton: "btn btn-success",
@@ -27,12 +40,38 @@ document.addEventListener('DOMContentLoaded', () => {
     reverseButtons: true
   }).then((result) => {
     if (result.isConfirmed) {
-      handleSubmit()
+      const spinnerContainer = document.querySelector('.spinner-container');
+      spinnerContainer.innerHTML = `
+        <div><p>Aguarde...</p></div>
+        <div class="spinner"</div>
+      `;
+      spinnerContainer.style.display = 'block'; 
+      handleSubmit().then(response => {
+        if (response.status===200) {
+        swalWithBootstrapButtons.fire({
+          title: "Actualizado!",
+          text: "El item ha sido actualizado.",
+          icon: "success"
+        });
+   
+      } else {
+        // Manejar otros estados si es necesario
+        swalWithBootstrapButtons.fire({
+          title: "Error",
+          text: "Hubo un problema al actualizar el item.",
+          icon: "error"
+        });
+       }
+    }).catch(error => {
+      console.log('soy el error: ',error+{error})
+      // Manejar errores en la solicitud
       swalWithBootstrapButtons.fire({
-        title: "Actualizado!",
-        text: "El item ha sido actualizado.",
-        icon: "success"
+        title: "Error",
+        text: "No se pudo actualizar el item.",
+        icon: "error"
       });
+    });
+  
     } else if (
       /* Read more about handling dismissals below */
       result.dismiss === Swal.DismissReason.cancel
@@ -47,61 +86,23 @@ document.addEventListener('DOMContentLoaded', () => {
 })
   //------------------------------
 
-//  // Mostrar el modal cuando se hace clic en "Actualizar"
-//  submitButton.addEventListener('click', () => {
-//   confirmModal.style.display = 'flex'; // Mostrar el modal
-// });
-
-// // Si el usuario hace clic en "Actualizar" en el modal
-// confirmBtn.addEventListener('click', async () => {
-//   confirmModal.style.display = 'none'; // Ocultar el modal
-
-//   // Aquí iría la lógica para enviar el formulario
-//   // Puedes llamar a la función handleSubmit que ya tienes definida
-//   handleSubmit();
-// });
-
-// // Si el usuario hace clic en "Cancelar" en el modal
-// cancelBtn.addEventListener('click', () => {
-//   confirmModal.style.display = 'none'; // Ocultar el modal
-// });
-
-  // Mostrar la vista previa de la imagen seleccionada
-  previewButton.addEventListener('click', () => {
-    if (fileInput.files && fileInput.files[0]) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        preview.src = e.target.result;
-        preview.style.display = 'block';
-      };
-      reader.readAsDataURL(fileInput.files[0]);
-    }
-  });
-
-  // Cancelar la selección de la imagen y ocultar la vista previa
-  cancelButton.addEventListener('click', () => {
-    fileInput.value = '';
-    preview.src = '';
-    preview.style.display = 'none';
-    img.value = ''; // Borra la URL de la imagen anterior si se cancela
-  });
-
- 
     const handleSubmit = async(e)=>{
-    const formData = new FormData(updateForm); // Captura todos los campos del formulario
+    const pageData = {
+                      img: document.getElementById('itemUrl').value, 
+                      text: document.getElementById('text').value,
+                      enable: document.getElementById('enable').value
+                     }
 
-     // Consologuear el contenido de FormData
-  // for (const [key, value] of formData.entries()) {
-  //   console.log(`${key}:`, value);
-  // }
+              console.log(pageData)
     const token = localStorage.getItem('token'); 
 
     try {
       const itemId = document.getElementById('itemId').value;
       const response = await fetch(`/api/v3/page/${itemId}`, {
         method: 'PATCH',
-        body: formData, // Envía el FormData con el archivo y otros datos
+        body: JSON.stringify(pageData), // Envía el FormData con el archivo y otros datos
         headers: {
+          'Content-Type': 'application/json',   
           'Authorization': `Bearer ${token}`, // Enviar el token en el encabezado
         },
       });
@@ -114,12 +115,12 @@ document.addEventListener('DOMContentLoaded', () => {
         //   </div>
         //   </div>
         // `;
-
+   
         // Recargar la página después de 2 segundos
         setTimeout(() => {
           window.location.reload();
         }, 1500);
-    
+        return response
       } else {
         document.querySelector('#updateForm').innerHTML = `
           <div class="alert alert-danger" role="alert" style="text-align: center; margin: 20px auto; border: 2px solid #8d281e; max-width: 400px; padding: 20px;">
@@ -132,8 +133,10 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           window.location.reload();
         }, 1500);
+        return response
       }
     } catch (error) {
+      console.error('aca estoy errando: ',error)
       document.querySelector('#updateForm').innerHTML = `
         <div class="alert alert-danger" role="alert" style="text-align: center; margin: 20px auto; border: 2px solid #8d281e; max-width: 400px; padding: 20px;" >
           <h1>Error</h1>

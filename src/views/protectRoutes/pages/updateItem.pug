@@ -1,4 +1,5 @@
 extends ../../layouts/adminLayout.pug
+include ../../mixins/imageUpload.pug
 
 
 block content
@@ -8,17 +9,7 @@ block content
     form#updateForm.needs-validation(novalidate)
       .row
         .col-md-6.mb-3
-          label.form-label(for="fileInput") Imagen:
-          .input-group
-            input.form-control(type="file" id="fileInput" name="image" accept="image/*")
-            button.btn.btn-outline-secondary(type="button" id="previewButton") Vista previa
-            button.btn.btn-outline-danger(type="button" id="cancelButton") Cancelar
-        
-        .col-md-6.mb-3
-          if item.img
-            img#preview.img-fluid(src=item.img, alt="Imagen actual")
-          else
-            img#preview.img-fluid(src="Not found", alt="Vista previa")
+          +imageUpload('fileItem', 'Imagen', 'itemPreview', 'itemUrl', item.img )
       
       .mb-3
         label.form-label(for="text") Texto:
@@ -30,7 +21,7 @@ block content
           option(value="true" selected=item.enable) True
           option(value="false" selected=!item.enable) False
       
-      input(type="hidden" id="img" name="img" value=item.img)
+      .spinner-container(style="display:none; text-align: center; margin-top: 20px;")
       input(type="hidden" id="itemId" name="itemId" value=item.id)
       
       button.btn.btn-primary(type="button" id="submitButton") Actualizar

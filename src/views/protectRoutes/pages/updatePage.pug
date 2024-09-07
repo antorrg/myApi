@@ -34,7 +34,7 @@ block content
           select.form-select(id="enable" name="enable" required)
             option(value="true" selected=page.info.enable) True
             option(value="false" selected=!page.info.enable) False
-      
+        .spinner-container(style="display:none; text-align: center; margin-top: 20px;")
         input(type="hidden" id="logo" name="logo" value=page.info.logo)
         input(type="hidden" id="landing" name="landing" value=page.info.landing)
         input(type="hidden" id="id" name="id" value=page.info.id)

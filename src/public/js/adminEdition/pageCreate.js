@@ -1,17 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const logoUrl = document.getElementById('logoUrl').value;
-  const landingUrl = document.getElementById('landingUrl');
-  const inputTitle = document.getElementById('title').value;
-  const inputInfo_header = document.getElementById('info_header');
-  const inputInfo_body = document.getElementById('info_body');
-  const inputUrl = document.getElementById('url');
-  const inputEnable = document.getElementById('enable');
-  const item0Url = document.getElementById('item0Url');
-  const item1Url = document.getElementById('item1Url');
-  const item2Url = document.getElementById('item2Url');
-  const text0 = document.getElementById('text0');
-  const text1 = document.getElementById('text1');
-  const text2 = document.getElementById('text2');
   const submitButton = document.getElementById('submitButton')
 
 

@@ -1,12 +1,24 @@
 document.addEventListener('DOMContentLoaded', ()=>{
-    const createForm = document.getElementById('createForm')
-    const fileInput = document.getElementById('fileInput')
-    const previewButton = document.getElementById('previewButton');
-    const cancelButton = document.getElementById('cancelButton');
-    const preview = document.getElementById('preview');
+
     const submitButton = document.getElementById('submitButton')
 //sweetalert:------------------------------------------
     submitButton.addEventListener('click', () => {
+          // Recoger todos los campos que deben ser validados
+  const img = document.getElementById('itemUrl').value.trim(); 
+  const text = document.getElementById('text').value.trim()
+  const enable = document.getElementById('enable').value;
+  
+  // Validar que no estén vacíos
+     if (!img|| !text || !enable) {
+       Swal.fire({
+         position: "center",
+         icon: "error",
+         title: "Por favor rellene todos los campos",
+         showConfirmButton: false,
+         timer: 1500
+       });
+       return;
+      }
         const swalWithBootstrapButtons = Swal.mixin({
           customClass: {
             confirmButton: "btn btn-success",
@@ -24,12 +36,41 @@ document.addEventListener('DOMContentLoaded', ()=>{
           reverseButtons: true
         }).then((result) => {
           if (result.isConfirmed) {
-            handleSubmit()
+            const spinnerContainer = document.querySelector('.spinner-container');
+            spinnerContainer.innerHTML = `
+              <div><p>Aguarde...</p></div>
+              <div class="spinner"</div>
+              <div class="progress mt-3" style="height: 20px;">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            `;
+            spinnerContainer.style.display = 'block'; 
+            handleSubmit().then(response => {
+            console.log('soy la response: ', response)
+            if (response.status===201) {
+              swalWithBootstrapButtons.fire({
+                title: "Creado!",
+                text: "El item ha sido creado.",
+                icon: "success"
+              });
+         
+            } else {
+              // Manejar otros estados si es necesario
+              swalWithBootstrapButtons.fire({
+                title: "Error",
+                text: "Hubo un problema al crear el item.",
+                icon: "error"
+              });
+            }
+          }).catch(error => {
+            console.log('soy el error: ',error)
+            // Manejar errores en la solicitud
             swalWithBootstrapButtons.fire({
-              title: "Hecho!",
-              text: "El nuevo item ha sido creado.",
-              icon: "success"
+              title: "Error",
+              text: "No se pudo crear el item.",
+              icon: "error"
             });
+          });
           } else if (
             /* Read more about handling dismissals below */
             result.dismiss === Swal.DismissReason.cancel
@@ -43,38 +84,24 @@ document.addEventListener('DOMContentLoaded', ()=>{
         });
       })
 //----------------------------------------
-previewButton.addEventListener('click', () => {
-    if (fileInput.files && fileInput.files[0]) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        preview.src = e.target.result;
-        preview.style.display = 'block';
-      };
-      reader.readAsDataURL(fileInput.files[0]);
-    }
-  });
-  cancelButton.addEventListener('click', () => {
-    fileInput.value = '';
-    preview.src = '';
-    preview.style.display = 'none';
-    img.value = ''; // Borra la URL de la imagen anterior si se cancela
-  });
+
   
   const handleSubmit = async(e)=>{
-    const formData = new FormData(createForm); // Captura todos los campos del formulario
+    const pageData = {
+      img: document.getElementById('itemUrl').value, 
+      text: document.getElementById('text').value
+     }
 
-     // Consologuear el contenido de FormData
-//   for (const [key, value] of formData.entries()) {
-//     console.log(`${key}:`, value);
-//   }
+console.log(pageData)
     const token = localStorage.getItem('token'); 
 
     try {
       const pageId = document.getElementById('id').value;
       const response = await fetch(`/api/v3/page/item/create`, {
         method: 'POST',
-        body: formData, // Envía el FormData con el archivo y otros datos
+        body: pageData, // Envía el FormData con el archivo y otros datos
         headers: {
+          'Content-Type': 'application/json', 
           'Authorization': `Bearer ${token}`, // Enviar el token en el encabezado
         },
       });

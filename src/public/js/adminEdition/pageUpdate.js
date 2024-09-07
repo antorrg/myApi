@@ -1,14 +1,5 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    const fileLogo = document.getElementById('fileLogo');
-    const fileLanding = document.getElementById('fileLanding');
-    const previewButton1 = document.getElementById('previewButton1');
-    const cancelButton1 = document.getElementById('cancelButton1');
-    const previewButton2 = document.getElementById('previewButton2');
-    const cancelButton2 = document.getElementById('cancelButton2');
-    const logoPreview = document.getElementById('logoPreview');
-    const landingPreview = document.getElementById('landingPreview')
-    const updateForm = document.getElementById('updateForm');
     const submitButton = document.getElementById('submitButton');
   
    
@@ -51,12 +42,33 @@ document.addEventListener('DOMContentLoaded', () => {
           reverseButtons: true
         }).then((result) => {
           if (result.isConfirmed) {
-            handleSubmit()
-            swalWithBootstrapButtons.fire({
-              title: "Actualizado!",
-              text: "El proyecto ha sido actualizado.",
-              icon: "success"
+            handleSubmit().then(response => {
+              console.log('soy la response: ', response)
+              if (response.status===200) {
+                swalWithBootstrapButtons.fire({
+                  title: "Actualizado!",
+                  text: "El proyecto ha sido actualizado.",
+                  icon: "success"
+                });
+           
+              } else {
+                // Manejar otros estados si es necesario
+                swalWithBootstrapButtons.fire({
+                  title: "Error",
+                  text: "Hubo un problema al actualizar el proyecto.",
+                  icon: "error"
+                });
+              }
+            }).catch(error => {
+              console.log('soy el error: ',error)
+              // Manejar errores en la solicitud
+              swalWithBootstrapButtons.fire({
+                title: "Error",
+                text: "No se pudo actualizar el proyecto.",
+                icon: "error"
+              });
             });
+            
           } else if (
             /* Read more about handling dismissals below */
             result.dismiss === Swal.DismissReason.cancel
@@ -69,8 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
       })
-    // Manejo del envío del formulario
-    //   e.preventDefault();
+   
     const handleSubmit = async()=>{
      
     const pageData = {
