@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }).then((result) => {
           if (result.isConfirmed) {
             handleSubmit().then(response => {
-              console.log('soy la response: ', response)
+              //console.log('soy la response: ', response)
               if (response.status===200) {
                 swalWithBootstrapButtons.fire({
                   title: "Actualizado!",
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
       try {
         const id = document.getElementById('id').value;
-        console.log('soy el id: ', id)
+        //console.log('soy el id: ', id)
         console.log(pageData)
         const response = await fetch(`/api/v3/page/${id}`, {
           method: 'PUT',
@@ -115,7 +115,19 @@ document.addEventListener('DOMContentLoaded', () => {
           setTimeout(() => {
             window.location.reload();
           }, 2000);
-      
+          return response;
+        }else {
+          document.querySelector('#createPageForm').innerHTML = `
+            <div class="alert alert-danger" role="alert" style="text-align: center; margin: 20px auto; border: 2px solid #8d281e; max-width: 400px; padding: 20px;">
+              <h1>Error ${response.status}</h1>
+              <h2>${response.statusText}</h2>
+              <strong>Por favor intente de nuevo</strong>
+            </div>
+          `;
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+          return response;
         }
       } catch (error) {
          document.querySelector('#updateForm').innerHTML = `
@@ -130,6 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           window.location.reload();
         }, 8000);
+        throw error;
       }
     };
   });

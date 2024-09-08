@@ -6,10 +6,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
           // Recoger todos los campos que deben ser validados
   const img = document.getElementById('itemUrl').value.trim(); 
   const text = document.getElementById('text').value.trim()
-  const enable = document.getElementById('enable').value;
   
   // Validar que no estén vacíos
-     if (!img|| !text || !enable) {
+     if (!img|| !text ) {
        Swal.fire({
          position: "center",
          icon: "error",
@@ -46,7 +45,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
             `;
             spinnerContainer.style.display = 'block'; 
             handleSubmit().then(response => {
-            console.log('soy la response: ', response)
             if (response.status===201) {
               swalWithBootstrapButtons.fire({
                 title: "Creado!",
@@ -63,7 +61,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
               });
             }
           }).catch(error => {
-            console.log('soy el error: ',error)
+            //console.log('soy el error: ',error)
             // Manejar errores en la solicitud
             swalWithBootstrapButtons.fire({
               title: "Error",
@@ -89,7 +87,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const handleSubmit = async(e)=>{
     const pageData = {
       img: document.getElementById('itemUrl').value, 
-      text: document.getElementById('text').value
+      text: document.getElementById('text').value,
+      id : document.getElementById('id').value,
      }
 
 console.log(pageData)
@@ -99,7 +98,7 @@ console.log(pageData)
       const pageId = document.getElementById('id').value;
       const response = await fetch(`/api/v3/page/item/create`, {
         method: 'POST',
-        body: pageData, // Envía el FormData con el archivo y otros datos
+        body: JSON.stringify(pageData), // Envía el FormData con el archivo y otros datos
         headers: {
           'Content-Type': 'application/json', 
           'Authorization': `Bearer ${token}`, // Enviar el token en el encabezado
@@ -110,8 +109,8 @@ console.log(pageData)
         // Recargar la página después de 2 segundos
         setTimeout(() => {
            window.location.href = `/admin/page/${pageId}`;
-        }, 1500);
-    
+        }, 2000);
+        return response
       } else {
         document.querySelector('#updateForm').innerHTML = `
           <div class="alert alert-danger" role="alert" style="text-align: center; margin: 20px auto; border: 2px solid #8d281e; max-width: 400px; padding: 20px;">
@@ -123,7 +122,8 @@ console.log(pageData)
   
         setTimeout(() => {
           window.location.reload();
-        }, 1500);
+        }, 2000);
+        return response
       }
     } catch (error) {
       document.querySelector('#updateForm').innerHTML = `
@@ -136,6 +136,7 @@ console.log(pageData)
       setTimeout(() => {
         window.location.reload();
       }, 8000);
+      throw error;
     }
   }
 })

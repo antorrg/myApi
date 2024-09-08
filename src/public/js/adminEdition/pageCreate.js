@@ -161,9 +161,8 @@ const pageData = {
        
         setTimeout(() => {
            window.location.href = `/admin`;
-        }, 150000);
-        
-    
+        }, 2000);
+        return response
       } else {
         document.querySelector('#createPageForm').innerHTML = `
           <div class="alert alert-danger" role="alert" style="text-align: center; margin: 20px auto; border: 2px solid #8d281e; max-width: 400px; padding: 20px;">
@@ -172,10 +171,10 @@ const pageData = {
             <strong>Por favor intente de nuevo</strong>
           </div>
         `;
-  
         setTimeout(() => {
           window.location.reload();
-        }, 150000);
+        }, 2000);
+        return response;
       }
     } catch (error) {
       document.querySelector('#createPageForm').innerHTML = `
@@ -187,7 +186,8 @@ const pageData = {
       `;
       setTimeout(() => {
         window.location.reload();
-      }, 150000);
+      }, 8000);
+      throw error;
     }
   }
 

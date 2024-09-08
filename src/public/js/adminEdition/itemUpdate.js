@@ -148,6 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         window.location.reload();
       }, 8000);
+      throw error;
     }
   }
  // });
