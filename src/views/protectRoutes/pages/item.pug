@@ -8,6 +8,6 @@ block content
           .modal-body.p-5.text-center
             img.d-block.mx-auto.mb-4(src=`${item.img}`, style="max-width: 50%;" , alt="image not found")
             p.text-muted=`${item.text}`
-            a.btn.btn-lg.btn-primary.mt-3.mx-auto.w-20(href=`/admin/page/${item.homeId}`) Cerrar
-            a.btn.btn-lg.btn-primary.mt-3.mx-auto.w-20(href=`/admin/item/update/${item.id}`) Actualizar
+            a.btn.btn-md.btn-secondary.mt-3.mx-auto.me-3.w-20(href=`/admin/page/${item.homeId}`) Cerrar
+            a.btn.btn-md.btn-primary.mt-3.mx-auto.me-3.w-20(href=`/admin/item/update/${item.id}`) Actualizar
       button.btn.btn-sm.btn-outline-danger(onclick=`deleteItem(${item.id})`) Eliminar item

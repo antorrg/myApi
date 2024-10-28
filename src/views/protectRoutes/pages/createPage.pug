@@ -33,7 +33,7 @@ block content
             option(value="true") True
             option(value="false" ) False
       .spinner-container(style="display:none; text-align: center; margin-top: 20px;")
-      .items-container
+      .items-container.mb-3
         h2 Items: 
         .itemCreate
           .row 
@@ -59,8 +59,8 @@ block content
             textarea.form-control(id="text2" name="items[2][text]" rows="3" required)
 
         .d-flex.justify-content-between.mb-3
-        button.btn.btn-primary.me-2.mb-3(type="button" id= "submitButton") Crear
-        a.btn.btn-primary.me-2.mb-3(href=`/admin`) Volver
+        button.btn.btn-md.btn-primary.me-2.mb-3.me-3(type="button" id= "submitButton") Crear
+        a.btn.btn-md.btn-primary.me-2.mb-3.me-3(href=`/admin`) Volver
       script(src='/js/adminEdition/pageCreate.js')
 
 

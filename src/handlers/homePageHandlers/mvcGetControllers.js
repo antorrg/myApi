@@ -30,5 +30,10 @@ aboutMe : eh.catchAsyncMVC(async(req, res)=>{
   res.render('acerca')
 }),
 
+pepe: eh.catchAsyncMVC(async(req, res)=>{
+  const info = await serv.getHome();
+  res.render('home', {info})
+})
+
 };
 

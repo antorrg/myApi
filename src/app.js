@@ -34,10 +34,8 @@ app.use(sessionMiddle)
 //app.use(cors(corsOptions))
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
-app.use(express.static(path.join(__dirname, 'views')))
+//app.use(express.static(path.join(__dirname, 'views')))
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.static(path.join(__dirname, "views/errors")));
-app.use('/detalles', express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(midd.validJson)

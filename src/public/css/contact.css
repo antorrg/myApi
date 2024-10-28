@@ -1,7 +1,7 @@
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background: url('/images/cieloError.jpg') no-repeat center center fixed;
+    background: url('https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/iconosApp%2FcieloError.jpg?alt=media&token=ba08fce7-3868-47a1-936f-76cdd8ccb675') no-repeat center center fixed;
     background-size: cover;
     background-color: #0d0a26;
     margin: 0;

@@ -19,9 +19,9 @@ block content
         strong Url:
         p= page.info.url 
         p
-          a.btn.btn-primary.my-2(href=`/admin/page/update/${page.info.id}`) Editar
-          a.btn.btn-primary.my-2(href=`/admin/page/itemCreate/${page.info.id}`) Agregar item
-          a.btn.btn-secondary.my-2(href="/admin") Volver
+          a.btn.btn-md.btn-primary.my-2.me-3(href=`/admin/page/update/${page.info.id}`) Editar
+          a.btn.btn-md.btn-success.my-2.me-3(href=`/admin/page/itemCreate/${page.info.id}`) Agregar item
+          a.btn.btn-md.btn-secondary.my-2.me-3(href="/admin") Volver
        
   .album.py-5.bg-light
     .container
@@ -48,4 +48,4 @@ block content
                         .btn-group
                           a.btn.btn-sm.btn-outline-secondary(href=`/admin/item/${item.id}`) Ver mas
                         small.text-muted 9 mins
-  button.btn.btn-sm.btn-outline-danger(onclick=`deletePage(${page.info.id})`) Eliminar proyecto
+  button.btn.btn-sm.btn-outline-danger.mb-3(onclick=`deletePage(${page.info.id})`) Eliminar proyecto
