@@ -5,12 +5,14 @@ import morgan from 'morgan'
 import helmet from 'helmet'
 import cors from 'cors'
 import mainRouter from './routes/mainRouter.js'
+import env from './envConfig.js'
 import midd from './utils/errors/index.js'
 import {sessionMiddle} from './utils/validation/sessionMiddle.js'
 import verifyAuth from './utils/validation/verifyAuth.js'
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
+
+//Constant for path:
+const rootDirname = path.resolve()
 const app = express();
 
 app.use(morgan('dev'))
@@ -26,22 +28,32 @@ app.use(morgan('dev'))
 //         },
 //     })
 // );
-const corsOptions = {
-    origin: '*', // Reemplaza con el origen de tu frontend
-    credentials: true, // Permitir el envío de credenciales (cookies, headers de autorización, etc.)
-};
+// const corsOptions = {
+//     origin: '*', // Reemplaza con el origen de tu frontend
+//     credentials: true, // Permitir el envío de credenciales (cookies, headers de autorización, etc.)
+// };
 app.use(sessionMiddle)
 //app.use(cors(corsOptions))
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "pug");
-//app.use(express.static(path.join(__dirname, 'views')))
-app.use(express.static(path.join(__dirname, "public")));
+
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(midd.validJson)
 app.use(verifyAuth);
 app.use(mainRouter)
 
+// Aqui se declara el servidor mvc.
+const viewPath = env.Status === 'production' 
+? path.join(rootDirname, 'dist/views')
+  : path.join(rootDirname, 'src/views'); 
+
+app.set("views", viewPath)
+app.set("view engine", "pug")
+
+const staticPath = env.Status === 'production' 
+   ? path.join(rootDirname, 'dist')
+  : path.join(rootDirname, 'src/public'); 
+
+app.use(express.static(staticPath))
 
 app.use(midd.lostRoute);
 

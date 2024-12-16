@@ -1,10 +1,4 @@
-// const throwError = (message, status)=>{
-//     const error = {
-//                     message : message,
-//                     status: status
-//                   }
-//     throw error;
-//   }
+
   const throwError = (message, status, code = null, log = false) =>{
   const error = new Error(message);
   error.status = status;

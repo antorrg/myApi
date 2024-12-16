@@ -8,7 +8,7 @@ const {PORT, DB_USER, DB_PASSWORD,DB_HOST, DB_NAME, DB_DEPLOY, USER_IMG, SECRET_
 const LocalDb =`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`
 
 const ConnectDb = process.env.NODE_ENV==='production'? DATABASE_URL:  LocalDb ;
-const Status= process.env.NODE_ENV==='production'? 'in production': 'in development';
+const Status= process.env.NODE_ENV==='production'? 'production': 'development';
 
 
 export default {

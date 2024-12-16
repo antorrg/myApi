@@ -11,12 +11,12 @@
 //*  %%   %%    %%    %%  %%  %%      %%       %%   %%   %%    %%%%º   %%%%%  %%  %%  %%     %%  %%  %%%%% %%%%%  %%%%%  
 
 
-//todo:::::::::: App creada el 27-07-2024 ::::::::::::::::::
+//todo:::::::::: App creada el 27-07-2024 y modificada el 16-12-2024 ::::::::::::::::::
 
-import app from './src/app.js'
-import {sequelize} from './src/db.js'
-import s from './src/envConfig.js'
-import initialUser from './src/controllers/holder/initialUser.js'
+import app from './server/app.js'
+import {sequelize} from './server/db.js'
+import s from './server/envConfig.js'
+import initialUser from './server/controllers/holder/initialUser.js'
 
 app.listen(s.Port, async ()=>{
     try {
